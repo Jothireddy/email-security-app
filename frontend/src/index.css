@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GRID BACKDROP */
+.grid-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+
+  background-size: 96px 96px;
+}
+
+/* GRADIENT GLOW */
+.gradient-layer {
+  position: fixed;
+  top: 140px;
+  left: 0;
+  width: 100%;
+  height: 520px;
+  z-index: 1;
+  pointer-events: none;
+
+  background: radial-gradient(
+    ellipse at top center,
+    rgba(255, 170, 95, 0.45),
+    rgba(255, 170, 95, 0) 70%
+  );
+
+  transition: opacity 0.3s ease;
+}
