@@ -8,15 +8,9 @@ const { ensureLabel } = require('./gmailHelpers');
 
 /**
  * Auto-labeling service with comprehensive email security analysis
- * Features:
- * - SPF, DKIM, DMARC validation
- * - TLS encryption checking
- * - Sender reputation analysis
- * - Automatic phishing/suspicious email detection
- * - Real-time statistics tracking
+ * IMPORTANT: Only ONE security label per email (removes old labels before adding new)
  */
 
-// Statistics tracking
 const sessionStats = {
   startTime: new Date(),
   totalScans: 0,
@@ -27,7 +21,6 @@ const sessionStats = {
   authenticationPassed: 0,
   authenticationFailed: 0
 };
-
 
 cron.schedule('*/30 * * * * *', async () => {
   console.log('\n╔════════════════════════════════════════════════════════════╗');
@@ -59,7 +52,6 @@ cron.schedule('*/30 * * * * *', async () => {
     }
   }
 
-  // Update session statistics
   sessionStats.totalProcessed += totalProcessed;
   sessionStats.phishingDetected += phishingDetected;
   sessionStats.suspiciousDetected += suspiciousDetected;
@@ -74,11 +66,6 @@ cron.schedule('*/30 * * * * *', async () => {
   }
 });
 
-/**
- * Process inbox for a single user with comprehensive security analysis
- * @param {string} userId - User email address
- * @returns {Object} Processing statistics
- */
 async function processUserInbox(userId) {
   const tokens = getUserTokens(userId);
   if (!tokens) {
@@ -88,13 +75,11 @@ async function processUserInbox(userId) {
 
   const gmail = getGmailClient(tokens);
 
-  // Ensure all security labels exist
   console.log(`[AutoLabeler] 🏷️  Ensuring labels for ${userId.substring(0, 25)}...`);
   const phishingLabelId = await ensureLabel(gmail, 'me', 'PHISHING_RISK');
   const suspiciousLabelId = await ensureLabel(gmail, 'me', 'SUSPICIOUS');
   const okLabelId = await ensureLabel(gmail, 'me', 'OK');
 
-  // Get recent INBOX messages
   const listRes = await gmail.users.messages.list({
     userId: 'me',
     labelIds: ['INBOX'],
@@ -115,78 +100,69 @@ async function processUserInbox(userId) {
   console.log(`[AutoLabeler] 📧 Processing ${messages.length} message(s) for ${userId.substring(0, 25)}...`);
 
   for (const msg of messages) {
-    // Skip already processed messages
     if (isMessageProcessed(userId, msg.id)) {
       continue;
     }
 
     try {
-      // Fetch full message headers for security analysis
       const full = await gmail.users.messages.get({
         userId: 'me',
         id: msg.id,
         format: 'metadata',
         metadataHeaders: [
-          'From',
-          'To',
-          'Subject',
-          'Date',
-          'Received',
-          'Authentication-Results',
-          'Return-Path',
-          'Reply-To',
-          'Message-ID',
-          'X-Originating-IP',
-          'Received-SPF',
-          'DKIM-Signature',
-          'ARC-Authentication-Results'
+          'From', 'To', 'Subject', 'Date', 'Received',
+          'Authentication-Results', 'Return-Path', 'Reply-To',
+          'Message-ID', 'X-Originating-IP', 'Received-SPF',
+          'DKIM-Signature', 'ARC-Authentication-Results'
         ]
       });
 
       const headers = full.data.payload.headers || [];
-      
-      // Perform comprehensive security analysis
       const analysis = analyzeHeaders(headers);
 
-      // Update user's authentication statistics
       updateAuthStats(userId, analysis);
 
-      // Update session statistics
       if (analysis.securityChecks.spf.pass || analysis.securityChecks.dkim.pass) {
         sessionStats.authenticationPassed++;
       } else {
         sessionStats.authenticationFailed++;
       }
 
-      // Determine security label to apply
-      let addLabelIds = [];
+      // Determine which label to apply
+      let addLabelId = null;
       let labelName = '';
       
       if (analysis.label === 'PHISHING_RISK') {
-        addLabelIds = [phishingLabelId];
+        addLabelId = phishingLabelId;
         labelName = 'PHISHING_RISK';
         phishingCount++;
       } else if (analysis.label === 'SUSPICIOUS') {
-        addLabelIds = [suspiciousLabelId];
+        addLabelId = suspiciousLabelId;
         labelName = 'SUSPICIOUS';
         suspiciousCount++;
       } else {
-        addLabelIds = [okLabelId];
+        addLabelId = okLabelId;
         labelName = 'OK';
         safeCount++;
       }
 
-      // Apply the security label
+      // CRITICAL: Remove ALL security labels first, then add only ONE
+      const currentLabels = full.data.labelIds || [];
+      const securityLabelIds = [phishingLabelId, suspiciousLabelId, okLabelId];
+      const labelsToRemove = currentLabels.filter(id => securityLabelIds.includes(id));
+
       await gmail.users.messages.modify({
         userId: 'me',
         id: msg.id,
-        requestBody: { addLabelIds }
+        requestBody: {
+          addLabelIds: [addLabelId],
+          removeLabelIds: labelsToRemove // Remove any existing security labels
+        }
       });
 
       markMessageProcessed(userId, msg.id);
       processed++;
 
-      // Log comprehensive analysis
       logEmailAnalysis(userId, msg.id, analysis, labelName);
 
     } catch (err) {
@@ -194,7 +170,6 @@ async function processUserInbox(userId) {
     }
   }
 
-  // Summary for this user
   if (processed > 0) {
     console.log(`[AutoLabeler] ✅ ${userId.substring(0, 25)}... - Processed: ${processed} | Safe: ${safeCount} | Suspicious: ${suspiciousCount} | Phishing: ${phishingCount}`);
   }
@@ -207,18 +182,10 @@ async function processUserInbox(userId) {
   };
 }
 
-/**
- * Log detailed email analysis with security checks
- * @param {string} userId - User email
- * @param {string} messageId - Gmail message ID
- * @param {Object} analysis - Analysis result from headerAnalyzer
- * @param {string} labelName - Applied label name
- */
 function logEmailAnalysis(userId, messageId, analysis, labelName) {
   const userShort = userId.substring(0, 20);
   const msgShort = messageId.substring(0, 10);
   
-  // Build authentication status string
   const authStatus = [
     `SPF:${analysis.securityChecks.spf.status}`,
     `DKIM:${analysis.securityChecks.dkim.status}`,
@@ -226,7 +193,6 @@ function logEmailAnalysis(userId, messageId, analysis, labelName) {
     `TLS:${analysis.securityChecks.tls.encrypted ? 'YES' : 'NO'}`
   ].join(' | ');
 
-  // Determine log icon based on label
   let icon = '✅';
   if (labelName === 'PHISHING_RISK') icon = '🚨';
   else if (labelName === 'SUSPICIOUS') icon = '⚠️';
@@ -235,14 +201,12 @@ function logEmailAnalysis(userId, messageId, analysis, labelName) {
   console.log(`              └─ ${authStatus}`);
   console.log(`              └─ Score: ${analysis.score}/15 | Risk: ${analysis.riskLevel.toUpperCase()} | Confidence: ${analysis.confidence}%`);
 
-  // Log specific security issues if any
   if (analysis.reasons.length > 0) {
     const reasonsShort = analysis.reasons.slice(0, 2).join(', ');
     const moreCount = analysis.reasons.length - 2;
     console.log(`              └─ Issues: ${reasonsShort}${moreCount > 0 ? ` (+${moreCount} more)` : ''}`);
   }
 
-  // Log critical findings
   if (analysis.securityChecks.dmarc.status === 'fail') {
     console.log(`              └─ ⚠️  CRITICAL: DMARC failed - possible domain spoofing!`);
   }
@@ -251,12 +215,8 @@ function logEmailAnalysis(userId, messageId, analysis, labelName) {
   }
 }
 
-/**
- * Get current session statistics
- * @returns {Object} Session statistics
- */
 function getSessionStats() {
-  const uptime = Math.floor((new Date() - sessionStats.startTime) / 1000); // seconds
+  const uptime = Math.floor((new Date() - sessionStats.startTime) / 1000);
   
   return {
     ...sessionStats,
@@ -270,9 +230,6 @@ function getSessionStats() {
   };
 }
 
-/**
- * Reset session statistics
- */
 function resetSessionStats() {
   sessionStats.startTime = new Date();
   sessionStats.totalScans = 0;
@@ -285,11 +242,6 @@ function resetSessionStats() {
   console.log('[AutoLabeler] 📊 Session statistics reset');
 }
 
-/**
- * Manual trigger function for testing/debugging
- * @param {string} userId - User email address
- * @returns {Promise<Object>} Processing results
- */
 async function manualScan(userId) {
   console.log(`\n[AutoLabeler] 🔍 Manual scan triggered for ${userId}`);
   console.log('════════════════════════════════════════════════════════');
@@ -302,9 +254,6 @@ async function manualScan(userId) {
   return result;
 }
 
-/**
- * Display current statistics banner
- */
 function displayStats() {
   const stats = getSessionStats();
   
@@ -322,12 +271,10 @@ function displayStats() {
   console.log('╚════════════════════════════════════════════════════════════╝\n');
 }
 
-// Display stats every 5 minutes
 cron.schedule('*/5 * * * *', () => {
   displayStats();
 });
 
-// Log startup
 console.log('\n╔════════════════════════════════════════════════════════════╗');
 console.log('║                                                            ║');
 console.log('║         🚀 AUTO-LABELER SERVICE INITIALIZED                ║');
@@ -339,6 +286,7 @@ console.log('║    ✓ DMARC Policy Enforcement                              �
 console.log('║    ✓ TLS Encryption Detection                              ║');
 console.log('║    ✓ Sender Reputation Analysis                            ║');
 console.log('║    ✓ Automatic Phishing Detection                          ║');
+console.log('║    ✓ ONE Label Per Email (removes old labels)              ║');
 console.log('║                                                            ║');
 console.log('║  Schedule: Every 30 seconds                                ║');
 console.log('║                                                            ║');

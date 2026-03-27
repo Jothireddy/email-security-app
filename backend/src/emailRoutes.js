@@ -19,9 +19,18 @@ router.get('/recent', requireAuth, async (req, res) => {
   }
 
   const limit = parseInt(req.query.limit || '20', 10);
+  const startDate = req.query.startDate; // Optional: ISO date string
+  const endDate = req.query.endDate;     // Optional: ISO date string
 
   try {
     const gmail = getGmailClient(tokens);
+
+    // Ensure labels exist before fetching emails (AUTO-CREATE IF MISSING)
+    console.log(`[EmailRoutes] Ensuring labels exist for ${userId.substring(0, 25)}...`);
+    const phishingLabelId = await ensureLabel(gmail, 'me', 'PHISHING_RISK');
+    const suspiciousLabelId = await ensureLabel(gmail, 'me', 'SUSPICIOUS');
+    const okLabelId = await ensureLabel(gmail, 'me', 'OK');
+    console.log(`[EmailRoutes] ✓ Labels verified`);
 
     // Get label map (id -> name)
     const labelRes = await gmail.users.labels.list({ userId: 'me' });
@@ -30,9 +39,23 @@ router.get('/recent', requireAuth, async (req, res) => {
       labelMap[l.id] = l.name;
     });
 
+    // Build query with date filter if provided
+    let query = 'in:inbox';
+    if (startDate) {
+      const start = new Date(startDate);
+      query += ` after:${Math.floor(start.getTime() / 1000)}`;
+    }
+    if (endDate) {
+      const end = new Date(endDate);
+      end.setHours(23, 59, 59, 999); // End of day
+      query += ` before:${Math.floor(end.getTime() / 1000)}`;
+    }
+
+    console.log(`[EmailRoutes] Query: ${query}`);
+
     const listRes = await gmail.users.messages.list({
       userId: 'me',
-      labelIds: ['INBOX'],
+      q: query,
       maxResults: limit
     });
 
@@ -80,7 +103,17 @@ router.get('/recent', requireAuth, async (req, res) => {
       count: results.length, 
       emails: results,
       timestamp: new Date().toISOString(),
-      summary: generateEmailSummary(results)
+      summary: generateEmailSummary(results),
+      labelsVerified: true,
+      labelIds: {
+        phishing: phishingLabelId,
+        suspicious: suspiciousLabelId,
+        ok: okLabelId
+      },
+      dateRange: {
+        start: startDate || null,
+        end: endDate || null
+      }
     });
   } catch (err) {
     console.error('Recent emails error:', err.response?.data || err);
@@ -400,6 +433,87 @@ router.post('/test-auth-analysis', requireAuth, async (req, res) => {
   } catch (err) {
     console.error('Test auth analysis error:', err);
     res.status(500).json({ error: 'Failed to analyze authentication' });
+  }
+});
+
+// ========== UTILITY ENDPOINTS ==========
+
+/**
+ * Ensure all security labels exist (create if missing)
+ * Call this endpoint if labels were deleted from Gmail
+ */
+router.post('/ensure-labels', requireAuth, async (req, res) => {
+  const userId = req.user.id;
+  const tokens = getUserTokens(userId);
+  if (!tokens) {
+    return res.status(401).json({ error: 'No tokens; login again' });
+  }
+
+  try {
+    const gmail = getGmailClient(tokens);
+
+    console.log(`[Labels] Verifying labels for ${userId}...`);
+
+    // Ensure all three labels exist (will create if missing)
+    const okId = await ensureLabel(gmail, 'me', 'OK');
+    const suspiciousId = await ensureLabel(gmail, 'me', 'SUSPICIOUS');
+    const phishingId = await ensureLabel(gmail, 'me', 'PHISHING_RISK');
+
+    console.log(`[Labels] ✓ All labels verified for ${userId}`);
+
+    res.json({ 
+      success: true,
+      message: 'All labels verified/created successfully',
+      labels: {
+        ok: { id: okId, name: 'OK' },
+        suspicious: { id: suspiciousId, name: 'SUSPICIOUS' },
+        phishing: { id: phishingId, name: 'PHISHING_RISK' }
+      }
+    });
+  } catch (err) {
+    console.error('[Labels] ensure-labels error:', err.response?.data || err);
+    res.status(500).json({ 
+      error: 'Failed to ensure labels exist',
+      details: err.message 
+    });
+  }
+});
+
+/**
+ * Check if labels exist without creating them
+ */
+router.get('/check-labels', requireAuth, async (req, res) => {
+  const userId = req.user.id;
+  const tokens = getUserTokens(userId);
+  if (!tokens) {
+    return res.status(401).json({ error: 'No tokens; login again' });
+  }
+
+  try {
+    const gmail = getGmailClient(tokens);
+    const labelRes = await gmail.users.labels.list({ userId: 'me' });
+    const labels = labelRes.data.labels || [];
+    
+    const okLabel = labels.find(l => l.name === 'OK');
+    const suspiciousLabel = labels.find(l => l.name === 'SUSPICIOUS');
+    const phishingLabel = labels.find(l => l.name === 'PHISHING_RISK');
+
+    res.json({
+      exists: {
+        ok: !!okLabel,
+        suspicious: !!suspiciousLabel,
+        phishing: !!phishingLabel
+      },
+      labels: {
+        ok: okLabel || null,
+        suspicious: suspiciousLabel || null,
+        phishing: phishingLabel || null
+      },
+      allLabelsExist: !!okLabel && !!suspiciousLabel && !!phishingLabel
+    });
+  } catch (err) {
+    console.error('[Labels] check-labels error:', err.response?.data || err);
+    res.status(500).json({ error: 'Failed to check labels' });
   }
 });
 

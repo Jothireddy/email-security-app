@@ -111,8 +111,8 @@ function App() {
 
 export default App;*/
 
-
 /*
+
 import React from 'react';
 import bg1 from '/src/assets/bg1.png';
 import bg2 from '/src/assets/bg2.png';
@@ -485,8 +485,8 @@ export default function App() {
   );
 }*/
 
-
 /*
+
 import React, { useEffect, useState } from 'react';
 import { setAuthToken, getAuthToken, fetchRecentEmails } from './api';
 
@@ -1544,7 +1544,7 @@ export default function App() {
   );
 }*/
 
-
+/*
 
 import React, { useEffect, useState } from 'react';
 import { setAuthToken, getAuthToken, fetchRecentEmails } from './api';
@@ -1634,10 +1634,10 @@ export default function App() {
         backgroundColor: '#f5f3f0'
       }}
     >
-      {/* Fixed Banner + Navbar */}
+      
       <div className="fixed top-0 left-0 right-0 z-50">
         <div className="mx-7 mt-7">
-          {/* Announcement Banner */}
+          
           <div className="rounded-t-xl overflow-hidden">
             <div className="bg-gradient-to-r from-[#c85940] to-[#d66645] text-white text-center py-1.5 px-4">
               <p className="text-[11px] font-normal tracking-wide">
@@ -1646,7 +1646,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Navigation */}
+         
           <nav
             className="rounded-b-xl"
             style={{
@@ -1668,16 +1668,16 @@ export default function App() {
           >
             <div className="px-10 py-2.5">
               <div className="flex items-center justify-between">
-                {/* Logo */}
+               
                 <div className="flex items-center">
                   <h1 className="text-[24px] font-normal tracking-tight text-gray-900">
                     MailShield
                   </h1>
                 </div>
 
-                {/* Navigation Links */}
+               
                 <div className="flex items-center gap-6">
-                  {/* PRODUCT Dropdown */}
+               
                   <div className="relative group">
                     <button className="text-gray-700 text-[12px] font-bold flex items-center hover:text-[#c85940] tracking-[0.04em] uppercase transition-colors">
                       PRODUCT
@@ -1745,7 +1745,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* PROJECT Dropdown */}
+               
                   <div className="relative group">
                     <button className="text-gray-700 text-[12px] font-bold flex items-center hover:text-[#c85940] tracking-[0.04em] uppercase transition-colors">
                       PROJECT
@@ -1828,7 +1828,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Hero / Product Intro */}
+   
       <div
         id="product"
         className="min-h-screen pt-40"
@@ -1869,7 +1869,6 @@ export default function App() {
         </main>
       </div>
 
-      {/* Gradient Transition */}
       <div
         className="h-16"
         style={{
@@ -1877,7 +1876,7 @@ export default function App() {
         }}
       ></div>
 
-      {/* Developer / API Section */}
+
       <div
         id="developers"
         className="relative overflow-hidden py-8"
@@ -1929,7 +1928,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Architecture Section */}
+      
       <div
         id="architecture"
         className="relative overflow-hidden py-12"
@@ -1976,7 +1975,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Core Capabilities Section */}
+   
       <div
         id="capabilities"
         className="relative overflow-hidden py-12"
@@ -1987,7 +1986,7 @@ export default function App() {
             Core capabilities & header intelligence
           </h3>
           <div className="grid grid-cols-3 gap-5">
-            {/* Card 1 - Header Analysis Engine */}
+          
             <div
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
               style={{ border: '6px solid #e8e5df' }}
@@ -2028,7 +2027,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Card 2 - Real-time Inbox Protection */}
+           
             <div
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
               style={{ border: '6px solid #e8e5df' }}
@@ -2067,7 +2066,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* Card 3 - Scheduled Auto-labeler */}
+           
             <div
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
               style={{ border: '6px solid #e8e5df' }}
@@ -2108,7 +2107,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Security Section */}
+ 
       <div
         id="security"
         className="relative overflow-hidden py-16"
@@ -2119,7 +2118,7 @@ export default function App() {
             An email security foundation you can trust
           </h3>
           <div className="grid grid-cols-3 gap-6">
-            {/* Card 1 - Least privilege */}
+          
             <div className="bg-[#ebe8e3] rounded-2xl p-8 relative overflow-hidden">
               <div
                 className="absolute right-0 top-0 bottom-0 w-16 opacity-20"
@@ -2152,7 +2151,7 @@ export default function App() {
               </p>
             </div>
 
-            {/* Card 2 - Transparent scoring */}
+        
             <div className="bg-[#ebe8e3] rounded-2xl p-8 relative overflow-hidden">
               <div
                 className="absolute right-0 top-0 bottom-0 w-16 opacity-20"
@@ -2186,7 +2185,7 @@ export default function App() {
               </p>
             </div>
 
-            {/* Card 3 - Extensible rules */}
+          
             <div className="bg-[#ebe8e3] rounded-2xl p-8 relative overflow-hidden">
               <div
                 className="absolute right-0 top-0 bottom-0 w-16 opacity-20"
@@ -2223,7 +2222,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Automation & Observability */}
+  
       <div
         id="automation"
         className="relative overflow-hidden py-12"
@@ -2286,7 +2285,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* Live Analysis Section */}
       <div
         id="live-analysis"
         className="relative overflow-hidden py-12"
@@ -2426,7 +2424,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Footer */}
+
       <footer className="relative bg-[#4a4a45] text-white overflow-hidden" id="about">
         <div className="max-w-[1400px] mx-auto px-8 py-16">
           <div className="grid grid-cols-4 gap-12">
@@ -2607,6 +2605,1986 @@ export default function App() {
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 opacity-40">
           <img src={bg4svg} alt="Decorative pattern" className="w-full h-full object-cover" />
+        </div>
+      </footer>
+    </div>
+  );
+}*/
+
+/*
+import React, { useEffect, useState } from 'react';
+import { setAuthToken, getAuthToken, fetchRecentEmails } from './api';
+
+export default function App() {
+  const [token, setToken] = useState(getAuthToken());
+  const [emails, setEmails] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [selectedFeature, setSelectedFeature] = useState(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get('token');
+    if (t) {
+      setAuthToken(t);
+      setToken(t);
+      window.history.replaceState({}, '', window.location.pathname);
+    } else if (getAuthToken()) {
+      setAuthToken(getAuthToken());
+    }
+  }, []);
+
+  const handleLogin = () => {
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth/google`;
+  };
+
+  const handleLogout = () => {
+    setAuthToken(null);
+    setToken(null);
+    setEmails([]);
+  };
+
+  const handleRefresh = async (limit = 20) => {
+    if (!token) return;
+    setLoading(true);
+    setError('');
+    try {
+      const data = await fetchRecentEmails(limit);
+      setEmails(data.emails || []);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to load emails. Please ensure the server is running.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const scrollToDashboard = () => {
+    const el = document.getElementById('dashboard');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleGetStarted = () => {
+    if (!token) {
+      handleLogin();
+    } else {
+      handleRefresh();
+      scrollToDashboard();
+    }
+  };
+
+  const featureDetails = {
+    authentication: {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      ),
+      title: 'Authentication Analysis',
+      gradient: 'from-cyan-400 to-blue-500',
+      details: {
+        overview: 'MailShield performs comprehensive email authentication analysis using industry-standard protocols to verify sender legitimacy.',
+        features: [
+          {
+            name: 'SPF Validation',
+            description: 'Sender Policy Framework checks verify that emails come from authorized mail servers for the sending domain.',
+            icon: '✓'
+          },
+          {
+            name: 'DKIM Verification',
+            description: 'DomainKeys Identified Mail ensures message integrity by validating cryptographic signatures in email headers.',
+            icon: '🔑'
+          },
+          {
+            name: 'DMARC Compliance',
+            description: 'Domain-based Message Authentication checks sender domain policies and alignment between SPF and DKIM.',
+            icon: '🛡️'
+          }
+        ],
+        benefits: [
+          'Detects spoofed sender addresses',
+          'Prevents domain impersonation attacks',
+          'Validates email authenticity in real-time',
+          'Provides detailed authentication reports'
+        ]
+      }
+    },
+    realtime: {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      title: 'Real-Time Protection',
+      gradient: 'from-blue-400 to-indigo-500',
+      details: {
+        overview: 'Instant email analysis and labeling powered by Gmail Push Notifications for immediate threat detection.',
+        features: [
+          {
+            name: 'Push Notifications',
+            description: 'Gmail Pub/Sub integration triggers instant analysis the moment a new email arrives in your inbox.',
+            icon: '📲'
+          },
+          {
+            name: 'Automatic Labeling',
+            description: 'Emails are automatically tagged with security labels (Phishing Risk, Suspicious, or Ok) based on analysis.',
+            icon: '🏷️'
+          },
+          {
+            name: 'Zero Delay',
+            description: 'Analysis completes in milliseconds, ensuring you see security warnings before you open suspicious emails.',
+            icon: '⚡'
+          }
+        ],
+        benefits: [
+          'No manual scanning required',
+          'Immediate threat identification',
+          'Reduces exposure to phishing attacks',
+          'Works 24/7 in the background'
+        ]
+      }
+    },
+    analytics: {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      title: 'Smart Analytics',
+      gradient: 'from-indigo-400 to-purple-500',
+      details: {
+        overview: 'Advanced scoring system with full transparency - understand exactly why each email received its security rating.',
+        features: [
+          {
+            name: 'Multi-Factor Scoring',
+            description: 'Combines SPF, DKIM, DMARC results with sender reputation, domain age, and content analysis for accurate ratings.',
+            icon: '📊'
+          },
+          {
+            name: 'Detailed Reasoning',
+            description: 'Every security label includes specific reasons explaining why the email was flagged or approved.',
+            icon: '💡'
+          },
+          {
+            name: 'Historical Tracking',
+            description: 'View trends and patterns in your email security over time to identify recurring threats.',
+            icon: '📈'
+          }
+        ],
+        benefits: [
+          'Understand security decisions',
+          'Learn to identify phishing patterns',
+          'Customize sensitivity thresholds',
+          'Export detailed security reports'
+        ]
+      }
+    },
+    oauth: {
+      icon: '🔐',
+      title: 'OAuth2 Security',
+      gradient: 'from-blue-500 to-cyan-500',
+      details: {
+        overview: 'Industry-standard OAuth2 authentication ensures your Gmail credentials remain secure and private.',
+        features: [
+          {
+            name: 'Minimal Permissions',
+            description: 'Only requests access to read email headers and manage labels - never accesses email content or password.',
+            icon: '🔒'
+          },
+          {
+            name: 'Google-Verified',
+            description: 'Authentication flow is managed entirely by Google, ensuring enterprise-grade security standards.',
+            icon: '✓'
+          },
+          {
+            name: 'Revocable Access',
+            description: 'You can revoke MailShield access anytime from your Google Account settings with one click.',
+            icon: '🚫'
+          }
+        ],
+        benefits: [
+          'No password sharing required',
+          'Encrypted token-based authentication',
+          'Full control over permissions',
+          'Google security standards'
+        ]
+      }
+    },
+    realtimeAnalysis: {
+      icon: '⚡',
+      title: 'Real-Time Analysis',
+      gradient: 'from-yellow-400 to-orange-500',
+      details: {
+        overview: 'Lightning-fast email processing powered by Gmail Push Notifications for instantaneous security alerts.',
+        features: [
+          {
+            name: 'Instant Labeling',
+            description: 'Emails are labeled the moment they arrive, before they appear in your inbox, providing immediate awareness.',
+            icon: '🏷️'
+          },
+          {
+            name: 'Background Processing',
+            description: 'Analysis runs automatically without any user interaction, ensuring continuous protection.',
+            icon: '🔄'
+          },
+          {
+            name: 'Smart Notifications',
+            description: 'Optional alerts for high-risk emails so you never miss a critical security warning.',
+            icon: '🔔'
+          }
+        ],
+        benefits: [
+          'Proactive threat detection',
+          'Seamless user experience',
+          'No performance impact',
+          'Always-on protection'
+        ]
+      }
+    },
+    scoring: {
+      icon: '📊',
+      title: 'Transparent Scoring',
+      gradient: 'from-purple-400 to-pink-500',
+      details: {
+        overview: 'Clear, explainable security scores with detailed breakdowns of every factor influencing the decision.',
+        features: [
+          {
+            name: 'Reason Tracking',
+            description: 'Each security label includes a list of specific reasons explaining the decision (e.g., "SPF failed", "Suspicious domain").',
+            icon: '📝'
+          },
+          {
+            name: 'Score Breakdown',
+            description: 'Numerical scores show exactly how close an email was to different security thresholds.',
+            icon: '🎯'
+          },
+          {
+            name: 'Learning Mode',
+            description: 'Review past decisions to understand phishing patterns and improve your security awareness.',
+            icon: '🎓'
+          }
+        ],
+        benefits: [
+          'No "black box" decisions',
+          'Educational insights',
+          'Build security knowledge',
+          'Audit trail for compliance'
+        ]
+      }
+    }
+  };
+
+  return (
+    <div className="min-h-screen relative" style={{
+      background: 'linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%)'
+    }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+        
+        * {
+          font-family: 'Outfit', sans-serif;
+        }
+        
+        @keyframes floatSlow {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-25px) rotate(3deg); }
+        }
+        
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes modalFadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-float-slow {
+          animation: floatSlow 8s ease-in-out infinite;
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-modal-in {
+          animation: modalFadeIn 0.3s ease-out forwards;
+        }
+        
+        .shimmer {
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+          background-size: 1000px 100%;
+          animation: shimmer 2s infinite;
+        }
+        
+        .gradient-text {
+          background: linear-gradient(120deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        
+        .glass {
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 0 4px 24px rgba(14, 165, 233, 0.06);
+        }
+        
+        .glow-soft {
+          box-shadow: 0 0 60px rgba(14, 165, 233, 0.12);
+        }
+        
+        .btn-primary {
+          background: linear-gradient(120deg, #0ea5e9 0%, #3b82f6 100%);
+          box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
+          transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+          box-shadow: 0 6px 30px rgba(14, 165, 233, 0.35);
+          transform: translateY(-1px);
+        }
+
+        .feature-card {
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+          transform: translateY(-4px);
+        }
+      `}</style>
+
+      
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-200/25 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-blue-200/25 rounded-full blur-3xl animate-float-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-200/15 rounded-full blur-3xl"></div>
+      </div>
+
+    
+      <nav className="fixed top-4 left-0 right-0 z-50 px-6">
+        <div className="max-w-[95%] mx-auto glass rounded-2xl px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center relative overflow-hidden" style={{
+                background: 'linear-gradient(120deg, #0ea5e9 0%, #3b82f6 100%)'
+              }}>
+                <div className="absolute inset-0 shimmer"></div>
+                <svg className="w-5 h-5 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h1 className="text-lg font-bold gradient-text">MailShield</h1>
+            </div>
+            
+            <div className="flex items-center gap-6">
+              <a href="#home" className="text-gray-600 hover:text-blue-600 font-medium text-sm transition-colors">
+                Home
+              </a>
+              <a href="#dashboard" className="text-gray-600 hover:text-blue-600 font-medium text-sm transition-colors">
+                Dashboard
+              </a>
+              <button
+                onClick={handleGetStarted}
+                className="btn-primary text-white px-5 py-2 rounded-xl font-semibold text-sm"
+              >
+                {token ? 'View Emails' : 'Get Started'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+     
+      {selectedFeature && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+          style={{ background: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(8px)' }}
+          onClick={() => setSelectedFeature(null)}
+        >
+          <div 
+            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-modal-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+          
+            <div className={`p-8 bg-gradient-to-br ${selectedFeature.gradient} text-white relative overflow-hidden`}>
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+              </div>
+              <div className="relative z-10">
+                <button
+                  onClick={() => setSelectedFeature(null)}
+                  className="absolute top-0 right-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-3xl">
+                    {typeof selectedFeature.icon === 'string' ? selectedFeature.icon : selectedFeature.icon}
+                  </div>
+                  <h2 className="text-3xl font-bold">{selectedFeature.title}</h2>
+                </div>
+                <p className="text-white/90 text-base leading-relaxed">
+                  {selectedFeature.details.overview}
+                </p>
+              </div>
+            </div>
+
+           
+            <div className="p-8">
+             
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                  <span className="w-1.5 h-6 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full"></span>
+                  Key Features
+                </h3>
+                <div className="space-y-4">
+                  {selectedFeature.details.features.map((feature, index) => (
+                    <div key={index} className="glass p-5 rounded-xl hover:shadow-lg transition-all">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center flex-shrink-0 text-xl">
+                          {feature.icon}
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-800 mb-1">{feature.name}</h4>
+                          <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+           
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                  <span className="w-1.5 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>
+                  Benefits
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {selectedFeature.details.benefits.map((benefit, index) => (
+                    <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-semibold text-gray-700">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+          
+              <div className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100">
+                <p className="text-gray-700 text-sm leading-relaxed mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Ready to experience {selectedFeature.title.toLowerCase()}? Connect your Gmail account to get started.
+                </p>
+                <button
+                  onClick={() => {
+                    setSelectedFeature(null);
+                    if (!token) {
+                      handleLogin();
+                    } else {
+                      scrollToDashboard();
+                    }
+                  }}
+                  className="btn-primary text-white px-6 py-3 rounded-xl font-semibold text-sm w-full"
+                >
+                  {token ? 'Go to Dashboard' : 'Connect Gmail Account'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <section id="home" className="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 relative">
+        <div className="w-full max-w-[95%] mx-auto text-center relative z-10">
+          <div className="mb-6 animate-fade-in-up">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold" style={{
+              background: 'linear-gradient(120deg, rgba(14, 165, 233, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%)',
+              border: '1px solid rgba(14, 165, 233, 0.15)',
+              color: '#0ea5e9'
+            }}>
+              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+              Secure Email Protection
+            </span>
+          </div>
+          
+          <h1 
+            className="text-5xl font-bold mb-6 leading-tight animate-fade-in-up"
+            style={{ 
+              animationDelay: '0.1s',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            <span className="gradient-text">
+              Email Header Analysis Tool
+            </span>
+            <br />
+            <span className="text-gray-800">
+              for Cyber Threat Intelligence
+            </span>
+          </h1>
+
+          <p className="text-base text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ 
+            animationDelay: '0.2s',
+            fontFamily: 'Inter, sans-serif'
+          }}>
+            MailShield connects to Gmail via OAuth2 and analyzes every email using{' '}
+            <span className="font-semibold text-blue-600">SPF</span>,{' '}
+            <span className="font-semibold text-blue-600">DKIM</span>, and{' '}
+            <span className="font-semibold text-blue-600">DMARC</span> protocols. 
+            Automatically labels emails as{' '}
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-red-50 text-red-600 border border-red-100">
+              Phishing Risk
+            </span>{' '}
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-yellow-50 text-yellow-700 border border-yellow-100">
+              Suspicious
+            </span>{' '}
+            or{' '}
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-green-50 text-green-600 border border-green-100">
+              Ok
+            </span>
+          </p>
+
+          <div className="flex items-center justify-center gap-3 mb-12 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            <button
+              onClick={handleGetStarted}
+              className="btn-primary text-white px-8 py-3 rounded-xl font-semibold text-sm"
+            >
+              Start Live Analysis
+            </button>
+            <button
+              onClick={scrollToDashboard}
+              className="glass text-gray-700 px-8 py-3 rounded-xl font-semibold text-sm hover:bg-white transition-all"
+            >
+              View Dashboard
+            </button>
+          </div>
+
+        
+          <div className="grid grid-cols-3 gap-6 max-w-[90%] mx-auto">
+            {[
+              {
+                key: 'authentication',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                ),
+                title: 'Authentication Analysis',
+                description: 'Real-time SPF, DKIM, and DMARC header validation',
+                gradient: 'from-cyan-400 to-blue-500'
+              },
+              {
+                key: 'realtime',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                ),
+                title: 'Real-Time Protection',
+                description: 'Instant labeling with push notifications',
+                gradient: 'from-blue-400 to-indigo-500'
+              },
+              {
+                key: 'analytics',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                ),
+                title: 'Smart Analytics',
+                description: 'Transparent scoring with detailed insights',
+                gradient: 'from-indigo-400 to-purple-500'
+              }
+            ].map((feature, index) => (
+              <div
+                key={index}
+                onClick={() => setSelectedFeature(featureDetails[feature.key])}
+                className="feature-card glass p-6 rounded-2xl hover:shadow-xl transition-all duration-300 group animate-fade-in-up"
+                style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br ${feature.gradient} text-white mx-auto group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
+                </div>
+                <h3 className="text-base font-bold text-gray-800 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {feature.description}
+                </p>
+                <div className="flex items-center justify-center text-blue-600 text-xs font-semibold group-hover:gap-2 gap-1 transition-all">
+                  Learn More
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="dashboard" className="min-h-screen py-16 px-6 relative">
+        <div className="w-full max-w-[95%] mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4" style={{ letterSpacing: '-0.02em' }}>
+              <span className="gradient-text">Live Email Analysis</span>
+            </h2>
+            <p className="text-base text-gray-600 max-w-2xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Connect your Gmail account to experience real-time phishing detection with automatic security labeling
+            </p>
+          </div>
+
+          <div className="glass rounded-2xl p-8 mb-8 glow-soft">
+            {!token ? (
+              <div className="text-center py-12">
+                <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto bg-gradient-to-br from-cyan-400 to-blue-500 text-white">
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                  Connect Your Gmail Account
+                </h3>
+                <p className="text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Securely connect via Google OAuth to enable real-time email security analysis.
+                  We only request minimal permissions to read headers and apply labels.
+                </p>
+                <button
+                  onClick={handleLogin}
+                  className="btn-primary text-white px-10 py-3 rounded-xl font-semibold text-base"
+                >
+                  Connect with Google
+                </button>
+              </div>
+            ) : (
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+                    <div>
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Connected</p>
+                      <p className="text-base font-bold text-gray-800">Gmail Account Active</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={handleLogout}
+                      className="glass text-gray-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-white transition-all"
+                    >
+                      Disconnect
+                    </button>
+                    <button
+                      onClick={() => handleRefresh(20)}
+                      disabled={loading}
+                      className="btn-primary text-white px-5 py-2.5 rounded-xl font-semibold text-sm disabled:opacity-50"
+                    >
+                      {loading ? 'Loading...' : 'Refresh Emails'}
+                    </button>
+                  </div>
+                </div>
+
+                {error && (
+                  <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-xl mb-6">
+                    <p className="text-red-700 font-semibold text-sm">{error}</p>
+                  </div>
+                )}
+
+                {emails.length > 0 ? (
+                  <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div className="overflow-x-auto">
+                      <table className="w-full" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        <thead style={{ background: 'linear-gradient(120deg, #0ea5e9 0%, #3b82f6 100%)' }}>
+                          <tr>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              Subject
+                            </th>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              From
+                            </th>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              Security Label
+                            </th>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              Score
+                            </th>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              Analysis
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100">
+                          {emails.map((email) => {
+                            const headers = {};
+                            (email.headers || []).forEach(h => {
+                              headers[h.name.toLowerCase()] = h.value;
+                            });
+
+                            return (
+                              <tr key={email.id} className="hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all">
+                                <td className="px-6 py-4">
+                                  <p className="font-semibold text-gray-800 truncate max-w-md text-sm">
+                                    {headers['subject'] || <span className="text-gray-400 italic">No subject</span>}
+                                  </p>
+                                </td>
+                                <td className="px-6 py-4">
+                                  <p className="text-gray-600 text-sm truncate max-w-xs">
+                                    {headers['from'] || <span className="text-gray-400 italic">Unknown</span>}
+                                  </p>
+                                </td>
+                                <td className="px-6 py-4">
+                                  <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold ${
+                                    email.analysis?.label === 'PHISHING_RISK'
+                                      ? 'bg-red-50 text-red-600 border border-red-100'
+                                      : email.analysis?.label === 'SUSPICIOUS'
+                                      ? 'bg-yellow-50 text-yellow-700 border border-yellow-100'
+                                      : 'bg-green-50 text-green-600 border border-green-100'
+                                  }`}>
+                                    {email.analysis?.label || 'N/A'}
+                                  </span>
+                                </td>
+                                <td className="px-6 py-4">
+                                  <span className="font-bold text-blue-600 text-base">
+                                    {email.analysis?.score ?? '-'}
+                                  </span>
+                                </td>
+                                <td className="px-6 py-4">
+                                  <p className="text-xs text-gray-600 max-w-xs line-clamp-2 leading-relaxed">
+                                    {(email.analysis?.reasons || []).join(', ') || 'No issues detected'}
+                                  </p>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ) : !loading && (
+                  <div className="text-center py-16">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-700 font-semibold text-base mb-1">No emails loaded yet</p>
+                    <p className="text-gray-500 text-sm">Click "Refresh Emails" to fetch your recent inbox messages</p>
+                  </div>
+                )}
+
+                {loading && (
+                  <div className="text-center py-16">
+                    <div className="w-16 h-16 border-4 border-blue-100 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-gray-700 font-semibold text-base">Loading your emails...</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+        
+          <div className="grid grid-cols-3 gap-5">
+            {[
+              { key: 'oauth', emoji: '🔐', title: 'OAuth2 Security', desc: 'Secure authentication with minimal Gmail permissions' },
+              { key: 'realtimeAnalysis', emoji: '⚡', title: 'Real-Time Analysis', desc: 'Push notifications ensure instant email labeling' },
+              { key: 'scoring', emoji: '📊', title: 'Transparent Scoring', desc: 'Every decision explained with detailed reasons' }
+            ].map((item, index) => (
+              <div 
+                key={index} 
+                onClick={() => setSelectedFeature(featureDetails[item.key])}
+                className="feature-card glass p-5 rounded-2xl hover:shadow-lg transition-all"
+              >
+                <div className="flex items-center gap-2.5 mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl flex items-center justify-center">
+                    <span className="text-xl">{item.emoji}</span>
+                  </div>
+                  <h4 className="font-bold text-gray-800 text-sm">{item.title}</h4>
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {item.desc}
+                </p>
+                <div className="flex items-center text-blue-600 text-xs font-semibold gap-1">
+                  Learn More
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <footer className="relative overflow-hidden" style={{
+        background: 'linear-gradient(120deg, #0c4a6e 0%, #0e7490 50%, #0891b2 100%)'
+      }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+        </div>
+        <div className="w-full max-w-[95%] mx-auto px-6 py-12 relative z-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white">MailShield</h3>
+                <p className="text-cyan-100 text-xs">Email Security Platform</p>
+              </div>
+            </div>
+            
+            <div className="text-right">
+              <p className="text-cyan-100 text-sm">© 2026 MailShield</p>
+              <p className="text-cyan-200 text-xs mt-0.5">Advanced Phishing Protection</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}*/
+
+import React, { useEffect, useState } from 'react';
+import { setAuthToken, getAuthToken, fetchRecentEmails, ensureLabels, API } from './api';
+
+export default function App() {
+  const [token, setToken] = useState(getAuthToken());
+  const [emails, setEmails] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [selectedFeature, setSelectedFeature] = useState(null);
+  const [labelStatus, setLabelStatus] = useState(null);
+  
+  // Calendar Modal state
+  const [showCalendarModal, setShowCalendarModal] = useState(false);
+  const [historicalEmails, setHistoricalEmails] = useState([]);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get('token');
+    if (t) {
+      setAuthToken(t);
+      setToken(t);
+      window.history.replaceState({}, '', window.location.pathname);
+    } else if (getAuthToken()) {
+      setAuthToken(getAuthToken());
+    }
+  }, []);
+
+  // AUTO-CREATE LABELS WHEN USER LOGS IN
+  useEffect(() => {
+    if (token) {
+      console.log('[App] User logged in, ensuring labels exist...');
+      ensureLabels()
+        .then(result => {
+          console.log('[App] ✓ Labels verified:', result);
+          setLabelStatus({ success: true, message: 'Labels ready' });
+        })
+        .catch(err => {
+          console.warn('[App] Label creation warning:', err);
+          setLabelStatus({ success: false, message: 'Label verification failed' });
+        });
+    }
+  }, [token]);
+
+  const handleLogin = () => {
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth/google`;
+  };
+
+  const handleLogout = () => {
+    setAuthToken(null);
+    setToken(null);
+    setEmails([]);
+    setLabelStatus(null);
+    setStartDate('');
+    setEndDate('');
+    setHistoricalEmails([]);
+    setShowCalendarModal(false);
+  };
+
+  const handleRefresh = async (limit = 20) => {
+    if (!token) return;
+    setLoading(true);
+    setError('');
+    try {
+      // First ensure labels exist (will create if missing)
+      console.log('[App] Ensuring labels exist before fetching emails...');
+      try {
+        const labelResult = await ensureLabels();
+        console.log('[App] ✓ Labels verified:', labelResult);
+        setLabelStatus({ success: true, message: 'Labels verified' });
+      } catch (labelErr) {
+        console.warn('[App] Label creation warning:', labelErr);
+      }
+
+      // Fetch RECENT emails only (no date filter for main table)
+      const response = await API.get(`/api/emails/recent?limit=${limit}`);
+      const data = response.data;
+      
+      setEmails(data.emails || []);
+      
+      if (data.labelsVerified) {
+        setLabelStatus({ success: true, message: 'All labels active' });
+      }
+    } catch (err) {
+      console.error(err);
+      setError('Failed to load emails. Please ensure the server is running.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSearchHistoricalInModal = async () => {
+    if (!token) return;
+    if (!startDate && !endDate) {
+      alert('Please select at least one date (From or To)');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      let url = `/api/emails/recent?limit=50`;
+      if (startDate) url += `&startDate=${startDate}`;
+      if (endDate) url += `&endDate=${endDate}`;
+
+      const response = await API.get(url);
+      setHistoricalEmails(response.data.emails || []);
+    } catch (err) {
+      console.error(err);
+      alert('Failed to search historical emails');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCreateLabels = async () => {
+    try {
+      setLoading(true);
+      const result = await ensureLabels();
+      setLabelStatus({ success: true, message: 'Labels created!' });
+      alert('Labels created successfully!\n\n' + 
+        `✓ OK: ${result.labels.ok.id}\n` +
+        `✓ SUSPICIOUS: ${result.labels.suspicious.id}\n` +
+        `✓ PHISHING_RISK: ${result.labels.phishing.id}`
+      );
+    } catch (err) {
+      setLabelStatus({ success: false, message: 'Failed to create labels' });
+      alert('Failed to create labels: ' + (err.response?.data?.error || err.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const scrollToDashboard = () => {
+    const el = document.getElementById('dashboard');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleGetStarted = () => {
+    if (!token) {
+      handleLogin();
+    } else {
+      handleRefresh();
+      scrollToDashboard();
+    }
+  };
+
+  // Format date for display
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  };
+
+  // Render email table row
+  const renderEmailRow = (email) => {
+    const headers = {};
+    (email.headers || []).forEach(h => {
+      headers[h.name.toLowerCase()] = h.value;
+    });
+
+    return (
+      <tr key={email.id} className="hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all">
+        <td className="px-6 py-4">
+          <p className="font-semibold text-gray-800 truncate max-w-md text-sm">
+            {headers['subject'] || <span className="text-gray-400 italic">No subject</span>}
+          </p>
+        </td>
+        <td className="px-6 py-4">
+          <p className="text-gray-600 text-sm truncate max-w-xs">
+            {headers['from'] || <span className="text-gray-400 italic">Unknown</span>}
+          </p>
+        </td>
+        <td className="px-6 py-4">
+          {email.analysis?.label ? (
+            <span className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold ${
+              email.analysis.label === 'PHISHING_RISK'
+                ? 'bg-red-50 text-red-600 border border-red-100'
+                : email.analysis.label === 'SUSPICIOUS'
+                ? 'bg-yellow-50 text-yellow-700 border border-yellow-100'
+                : 'bg-green-50 text-green-600 border border-green-100'
+            }`}>
+              {email.analysis.label === 'PHISHING_RISK' ? 'PHISHING RISK' :
+               email.analysis.label === 'SUSPICIOUS' ? 'SUSPICIOUS' :
+               'OK'}
+            </span>
+          ) : (
+            <span className="text-gray-400 text-xs italic">Not analyzed</span>
+          )}
+        </td>
+        <td className="px-6 py-4">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-blue-600 text-base">
+              {email.analysis?.score ?? '-'}
+            </span>
+            <span className="text-xs text-gray-500">
+              ({email.analysis?.confidence ?? '-'}%)
+            </span>
+          </div>
+        </td>
+        <td className="px-6 py-4">
+          {email.analysis?.reasons && email.analysis.reasons.length > 0 ? (
+            <div className="space-y-1">
+              {email.analysis.reasons.map((reason, idx) => (
+                <div key={idx} className="flex items-start gap-2">
+                  <span className="text-blue-600 text-xs mt-0.5">•</span>
+                  <span className="text-xs text-gray-700 leading-relaxed">
+                    {reason}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span className="text-xs text-green-600 italic">All checks passed</span>
+          )}
+        </td>
+      </tr>
+    );
+  };
+
+  const featureDetails = {
+    authentication: {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      ),
+      title: 'Authentication Analysis',
+      gradient: 'from-cyan-400 to-blue-500',
+      details: {
+        overview: 'MailShield performs comprehensive email authentication analysis using industry-standard protocols to verify sender legitimacy.',
+        features: [
+          {
+            name: 'SPF Validation',
+            description: 'Sender Policy Framework checks verify that emails come from authorized mail servers for the sending domain.',
+            icon: '✓'
+          },
+          {
+            name: 'DKIM Verification',
+            description: 'DomainKeys Identified Mail ensures message integrity by validating cryptographic signatures in email headers.',
+            icon: '🔑'
+          },
+          {
+            name: 'DMARC Compliance',
+            description: 'Domain-based Message Authentication checks sender domain policies and alignment between SPF and DKIM.',
+            icon: '🛡️'
+          }
+        ],
+        benefits: [
+          'Detects spoofed sender addresses',
+          'Prevents domain impersonation attacks',
+          'Validates email authenticity in real-time',
+          'Provides detailed authentication reports'
+        ]
+      }
+    },
+    realtime: {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      title: 'Real-Time Protection',
+      gradient: 'from-blue-400 to-indigo-500',
+      details: {
+        overview: 'Instant email analysis and labeling powered by Gmail Push Notifications for immediate threat detection.',
+        features: [
+          {
+            name: 'Push Notifications',
+            description: 'Gmail Pub/Sub integration triggers instant analysis the moment a new email arrives in your inbox.',
+            icon: '📲'
+          },
+          {
+            name: 'Automatic Labeling',
+            description: 'Emails are automatically tagged with security labels (Phishing Risk, Suspicious, or Ok) based on analysis.',
+            icon: '🏷️'
+          },
+          {
+            name: 'Zero Delay',
+            description: 'Analysis completes in milliseconds, ensuring you see security warnings before you open suspicious emails.',
+            icon: '⚡'
+          }
+        ],
+        benefits: [
+          'No manual scanning required',
+          'Immediate threat identification',
+          'Reduces exposure to phishing attacks',
+          'Works 24/7 in the background'
+        ]
+      }
+    },
+    analytics: {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      title: 'Smart Analytics',
+      gradient: 'from-indigo-400 to-purple-500',
+      details: {
+        overview: 'Advanced scoring system with full transparency - understand exactly why each email received its security rating.',
+        features: [
+          {
+            name: 'Multi-Factor Scoring',
+            description: 'Combines SPF, DKIM, DMARC results with sender reputation, domain age, and content analysis for accurate ratings.',
+            icon: '📊'
+          },
+          {
+            name: 'Detailed Reasoning',
+            description: 'Every security label includes specific reasons explaining why the email was flagged or approved.',
+            icon: '💡'
+          },
+          {
+            name: 'Historical Tracking',
+            description: 'View trends and patterns in your email security over time to identify recurring threats.',
+            icon: '📈'
+          }
+        ],
+        benefits: [
+          'Understand security decisions',
+          'Learn to identify phishing patterns',
+          'Customize sensitivity thresholds',
+          'Export detailed security reports'
+        ]
+      }
+    },
+    oauth: {
+      icon: '🔐',
+      title: 'OAuth2 Security',
+      gradient: 'from-blue-500 to-cyan-500',
+      details: {
+        overview: 'Industry-standard OAuth2 authentication ensures your Gmail credentials remain secure and private.',
+        features: [
+          {
+            name: 'Minimal Permissions',
+            description: 'Only requests access to read email headers and manage labels - never accesses email content or password.',
+            icon: '🔒'
+          },
+          {
+            name: 'Google-Verified',
+            description: 'Authentication flow is managed entirely by Google, ensuring enterprise-grade security standards.',
+            icon: '✓'
+          },
+          {
+            name: 'Revocable Access',
+            description: 'You can revoke MailShield access anytime from your Google Account settings with one click.',
+            icon: '🚫'
+          }
+        ],
+        benefits: [
+          'No password sharing required',
+          'Encrypted token-based authentication',
+          'Full control over permissions',
+          'Google security standards'
+        ]
+      }
+    },
+    realtimeAnalysis: {
+      icon: '⚡',
+      title: 'Real-Time Analysis',
+      gradient: 'from-yellow-400 to-orange-500',
+      details: {
+        overview: 'Lightning-fast email processing powered by Gmail Push Notifications for instantaneous security alerts.',
+        features: [
+          {
+            name: 'Instant Labeling',
+            description: 'Emails are labeled the moment they arrive, before they appear in your inbox, providing immediate awareness.',
+            icon: '🏷️'
+          },
+          {
+            name: 'Background Processing',
+            description: 'Analysis runs automatically without any user interaction, ensuring continuous protection.',
+            icon: '🔄'
+          },
+          {
+            name: 'Smart Notifications',
+            description: 'Optional alerts for high-risk emails so you never miss a critical security warning.',
+            icon: '🔔'
+          }
+        ],
+        benefits: [
+          'Proactive threat detection',
+          'Seamless user experience',
+          'No performance impact',
+          'Always-on protection'
+        ]
+      }
+    },
+    scoring: {
+      icon: '📊',
+      title: 'Transparent Scoring',
+      gradient: 'from-purple-400 to-pink-500',
+      details: {
+        overview: 'Clear, explainable security scores with detailed breakdowns of every factor influencing the decision.',
+        features: [
+          {
+            name: 'Reason Tracking',
+            description: 'Each security label includes a list of specific reasons explaining the decision (e.g., "SPF failed", "Suspicious domain").',
+            icon: '📝'
+          },
+          {
+            name: 'Score Breakdown',
+            description: 'Numerical scores show exactly how close an email was to different security thresholds.',
+            icon: '🎯'
+          },
+          {
+            name: 'Learning Mode',
+            description: 'Review past decisions to understand phishing patterns and improve your security awareness.',
+            icon: '🎓'
+          }
+        ],
+        benefits: [
+          'No "black box" decisions',
+          'Educational insights',
+          'Build security knowledge',
+          'Audit trail for compliance'
+        ]
+      }
+    }
+  };
+
+  return (
+    <div className="min-h-screen relative" style={{
+      background: 'linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%)'
+    }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+        
+        * {
+          font-family: 'Outfit', sans-serif;
+        }
+        
+        @keyframes floatSlow {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-25px) rotate(3deg); }
+        }
+        
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes modalFadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-float-slow {
+          animation: floatSlow 8s ease-in-out infinite;
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-modal-in {
+          animation: modalFadeIn 0.3s ease-out forwards;
+        }
+        
+        .shimmer {
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+          background-size: 1000px 100%;
+          animation: shimmer 2s infinite;
+        }
+        
+        .gradient-text {
+          background: linear-gradient(120deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        
+        .glass {
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 0 4px 24px rgba(14, 165, 233, 0.06);
+        }
+        
+        .glow-soft {
+          box-shadow: 0 0 60px rgba(14, 165, 233, 0.12);
+        }
+        
+        .btn-primary {
+          background: linear-gradient(120deg, #0ea5e9 0%, #3b82f6 100%);
+          box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
+          transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+          box-shadow: 0 6px 30px rgba(14, 165, 233, 0.35);
+          transform: translateY(-1px);
+        }
+
+        .feature-card {
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+          transform: translateY(-4px);
+        }
+      `}</style>
+
+      {/* Decorative Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-200/25 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-blue-200/25 rounded-full blur-3xl animate-float-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-200/15 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="fixed top-4 left-0 right-0 z-50 px-6">
+        <div className="max-w-[95%] mx-auto glass rounded-2xl px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center relative overflow-hidden" style={{
+                background: 'linear-gradient(120deg, #0ea5e9 0%, #3b82f6 100%)'
+              }}>
+                <div className="absolute inset-0 shimmer"></div>
+                <svg className="w-5 h-5 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h1 className="text-lg font-bold gradient-text">MailShield</h1>
+              {labelStatus && (
+                <span className={`text-xs px-2 py-1 rounded-full ${
+                  labelStatus.success 
+                    ? 'bg-green-50 text-green-600 border border-green-100' 
+                    : 'bg-yellow-50 text-yellow-700 border border-yellow-100'
+                }`}>
+                  {labelStatus.message}
+                </span>
+              )}
+            </div>
+            
+            <div className="flex items-center gap-6">
+              <a href="#home" className="text-gray-600 hover:text-blue-600 font-medium text-sm transition-colors">
+                Home
+              </a>
+              <a href="#dashboard" className="text-gray-600 hover:text-blue-600 font-medium text-sm transition-colors">
+                Dashboard
+              </a>
+              <button
+                onClick={handleGetStarted}
+                className="btn-primary text-white px-5 py-2 rounded-xl font-semibold text-sm"
+              >
+                {token ? 'View Emails' : 'Get Started'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Calendar Modal */}
+      {showCalendarModal && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+          style={{ background: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(8px)' }}
+          onClick={() => setShowCalendarModal(false)}
+        >
+          <div 
+            className="bg-white rounded-3xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto animate-modal-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="p-6 bg-gradient-to-br from-blue-500 to-cyan-500 text-white">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <h2 className="text-2xl font-bold">Check Previous Emails</h2>
+                </div>
+                <button
+                  onClick={() => setShowCalendarModal(false)}
+                  className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Date Picker */}
+            <div className="p-6 bg-gray-50 border-b">
+              <p className="text-sm text-gray-600 mb-4">Select a date range to analyze historical emails</p>
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">From Date</label>
+                  <input
+                    type="date"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">To Date</label>
+                  <input
+                    type="date"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  />
+                </div>
+              </div>
+              <button
+                onClick={handleSearchHistoricalInModal}
+                disabled={loading}
+                className="btn-primary text-white px-6 py-2 rounded-lg font-semibold text-sm disabled:opacity-50"
+              >
+                {loading ? 'Searching...' : 'Search Emails'}
+              </button>
+            </div>
+
+            {/* Results Table */}
+            <div className="p-6">
+              {loading ? (
+                <div className="text-center py-16">
+                  <div className="w-16 h-16 border-4 border-blue-100 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
+                  <p className="text-gray-700 font-semibold text-base">Searching emails...</p>
+                </div>
+              ) : historicalEmails.length > 0 ? (
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      <thead style={{ background: 'linear-gradient(120deg, #0ea5e9 0%, #3b82f6 100%)' }}>
+                        <tr>
+                          <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">Subject</th>
+                          <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">From</th>
+                          <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">Security Label</th>
+                          <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">Score</th>
+                          <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90 w-64">Why / Reasons</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-100">
+                        {historicalEmails.map(renderEmailRow)}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center py-16">
+                  <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p className="text-gray-500 text-sm">Select dates and click "Search Emails" to view historical emails</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Feature Modal */}
+      {selectedFeature && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+          style={{ background: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(8px)' }}
+          onClick={() => setSelectedFeature(null)}
+        >
+          <div 
+            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-modal-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className={`p-8 bg-gradient-to-br ${selectedFeature.gradient} text-white relative overflow-hidden`}>
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+              </div>
+              <div className="relative z-10">
+                <button
+                  onClick={() => setSelectedFeature(null)}
+                  className="absolute top-0 right-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-3xl">
+                    {typeof selectedFeature.icon === 'string' ? selectedFeature.icon : selectedFeature.icon}
+                  </div>
+                  <h2 className="text-3xl font-bold">{selectedFeature.title}</h2>
+                </div>
+                <p className="text-white/90 text-base leading-relaxed">
+                  {selectedFeature.details.overview}
+                </p>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-8">
+              {/* Features Section */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                  <span className="w-1.5 h-6 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full"></span>
+                  Key Features
+                </h3>
+                <div className="space-y-4">
+                  {selectedFeature.details.features.map((feature, index) => (
+                    <div key={index} className="glass p-5 rounded-xl hover:shadow-lg transition-all">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center flex-shrink-0 text-xl">
+                          {feature.icon}
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-800 mb-1">{feature.name}</h4>
+                          <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Benefits Section */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                  <span className="w-1.5 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>
+                  Benefits
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {selectedFeature.details.benefits.map((benefit, index) => (
+                    <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-semibold text-gray-700">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100">
+                <p className="text-gray-700 text-sm leading-relaxed mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Ready to experience {selectedFeature.title.toLowerCase()}? Connect your Gmail account to get started.
+                </p>
+                <button
+                  onClick={() => {
+                    setSelectedFeature(null);
+                    if (!token) {
+                      handleLogin();
+                    } else {
+                      scrollToDashboard();
+                    }
+                  }}
+                  className="btn-primary text-white px-6 py-3 rounded-xl font-semibold text-sm w-full"
+                >
+                  {token ? 'Go to Dashboard' : 'Connect Gmail Account'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Hero Section */}
+      <section id="home" className="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 relative">
+        <div className="w-full max-w-[95%] mx-auto text-center relative z-10">
+          <div className="mb-6 animate-fade-in-up">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold" style={{
+              background: 'linear-gradient(120deg, rgba(14, 165, 233, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%)',
+              border: '1px solid rgba(14, 165, 233, 0.15)',
+              color: '#0ea5e9'
+            }}>
+              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+              Secure Email Protection
+            </span>
+          </div>
+          
+          <h1 
+            className="text-5xl font-bold mb-6 leading-tight animate-fade-in-up"
+            style={{ 
+              animationDelay: '0.1s',
+              letterSpacing: '-0.02em'
+            }}
+          >
+            <span className="gradient-text">
+              Email Header Analysis Tool
+            </span>
+            <br />
+            <span className="text-gray-800">
+              for Cyber Threat Intelligence
+            </span>
+          </h1>
+
+          <p className="text-base text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ 
+            animationDelay: '0.2s',
+            fontFamily: 'Inter, sans-serif'
+          }}>
+            MailShield connects to Gmail via OAuth2 and analyzes every email using{' '}
+            <span className="font-semibold text-blue-600">SPF</span>,{' '}
+            <span className="font-semibold text-blue-600">DKIM</span>, and{' '}
+            <span className="font-semibold text-blue-600">DMARC</span> protocols. 
+            Automatically labels emails as{' '}
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-red-50 text-red-600 border border-red-100">
+              Phishing Risk
+            </span>{' '}
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-yellow-50 text-yellow-700 border border-yellow-100">
+              Suspicious
+            </span>{' '}
+            or{' '}
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-green-50 text-green-600 border border-green-100">
+              Ok
+            </span>
+          </p>
+
+          <div className="flex items-center justify-center gap-3 mb-12 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            <button
+              onClick={handleGetStarted}
+              className="btn-primary text-white px-8 py-3 rounded-xl font-semibold text-sm"
+            >
+              Start Live Analysis
+            </button>
+            <button
+              onClick={scrollToDashboard}
+              className="glass text-gray-700 px-8 py-3 rounded-xl font-semibold text-sm hover:bg-white transition-all"
+            >
+              View Dashboard
+            </button>
+          </div>
+
+          {/* Feature Cards */}
+          <div className="grid grid-cols-3 gap-6 max-w-[90%] mx-auto">
+            {[
+              {
+                key: 'authentication',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                ),
+                title: 'Authentication Analysis',
+                description: 'Real-time SPF, DKIM, and DMARC header validation',
+                gradient: 'from-cyan-400 to-blue-500'
+              },
+              {
+                key: 'realtime',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                ),
+                title: 'Real-Time Protection',
+                description: 'Instant labeling with push notifications',
+                gradient: 'from-blue-400 to-indigo-500'
+              },
+              {
+                key: 'analytics',
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                ),
+                title: 'Smart Analytics',
+                description: 'Transparent scoring with detailed insights',
+                gradient: 'from-indigo-400 to-purple-500'
+              }
+            ].map((feature, index) => (
+              <div
+                key={index}
+                onClick={() => setSelectedFeature(featureDetails[feature.key])}
+                className="feature-card glass p-6 rounded-2xl hover:shadow-xl transition-all duration-300 group animate-fade-in-up"
+                style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br ${feature.gradient} text-white mx-auto group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
+                </div>
+                <h3 className="text-base font-bold text-gray-800 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {feature.description}
+                </p>
+                <div className="flex items-center justify-center text-blue-600 text-xs font-semibold group-hover:gap-2 gap-1 transition-all">
+                  Learn More
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dashboard Section */}
+      <section id="dashboard" className="min-h-screen py-16 px-6 relative">
+        <div className="w-full max-w-[95%] mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4" style={{ letterSpacing: '-0.02em' }}>
+              <span className="gradient-text">Live Email Analysis</span>
+            </h2>
+            <p className="text-base text-gray-600 max-w-2xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Connect your Gmail account to experience real-time phishing detection with automatic security labeling
+            </p>
+          </div>
+
+          {/* Connection Card */}
+          <div className="glass rounded-2xl p-8 mb-8 glow-soft">
+            {!token ? (
+              <div className="text-center py-12">
+                <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto bg-gradient-to-br from-cyan-400 to-blue-500 text-white">
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                  Connect Your Gmail Account
+                </h3>
+                <p className="text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Securely connect via Google OAuth to enable real-time email security analysis.
+                  We only request minimal permissions to read headers and apply labels.
+                </p>
+                <button
+                  onClick={handleLogin}
+                  className="btn-primary text-white px-10 py-3 rounded-xl font-semibold text-base"
+                >
+                  Connect with Google
+                </button>
+              </div>
+            ) : (
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+                    <div>
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Connected</p>
+                      <p className="text-base font-bold text-gray-800">Gmail Account Active</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setShowCalendarModal(true)}
+                      className="btn-primary text-white px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      Check Previous Emails
+                    </button>
+                    <button
+                      onClick={handleCreateLabels}
+                      disabled={loading}
+                      className="glass text-gray-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-white transition-all disabled:opacity-50"
+                    >
+                      Create Labels
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="glass text-gray-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-white transition-all"
+                    >
+                      Disconnect
+                    </button>
+                    <button
+                      onClick={() => handleRefresh(20)}
+                      disabled={loading}
+                      className="glass text-blue-600 px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-blue-50 transition-all disabled:opacity-50 border border-blue-200"
+                    >
+                      {loading ? 'Loading...' : 'Refresh Recent'}
+                    </button>
+                  </div>
+                </div>
+
+                {error && (
+                  <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-xl mb-6">
+                    <p className="text-red-700 font-semibold text-sm">{error}</p>
+                  </div>
+                )}
+
+                {emails.length > 0 ? (
+                  <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div className="overflow-x-auto">
+                      <table className="w-full" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        <thead style={{ background: 'linear-gradient(120deg, #0ea5e9 0%, #3b82f6 100%)' }}>
+                          <tr>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              Subject
+                            </th>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              From
+                            </th>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              Security Label
+                            </th>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90">
+                              Score
+                            </th>
+                            <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wide text-white/90 w-64">
+                              Why / Reasons
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100">
+                          {emails.map(renderEmailRow)}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ) : !loading && (
+                  <div className="text-center py-16">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-700 font-semibold text-base mb-1">No emails found</p>
+                    <p className="text-gray-500 text-sm">Click "Refresh Recent" to fetch your latest inbox messages</p>
+                  </div>
+                )}
+
+                {loading && (
+                  <div className="text-center py-16">
+                    <div className="w-16 h-16 border-4 border-blue-100 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-gray-700 font-semibold text-base">Loading your emails...</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Security Features */}
+          <div className="grid grid-cols-3 gap-5">
+            {[
+              { key: 'oauth', emoji: '🔐', title: 'OAuth2 Security', desc: 'Secure authentication with minimal Gmail permissions' },
+              { key: 'realtimeAnalysis', emoji: '⚡', title: 'Real-Time Analysis', desc: 'Push notifications ensure instant email labeling' },
+              { key: 'scoring', emoji: '📊', title: 'Transparent Scoring', desc: 'Every decision explained with detailed reasons' }
+            ].map((item, index) => (
+              <div 
+                key={index} 
+                onClick={() => setSelectedFeature(featureDetails[item.key])}
+                className="feature-card glass p-5 rounded-2xl hover:shadow-lg transition-all"
+              >
+                <div className="flex items-center gap-2.5 mb-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl flex items-center justify-center">
+                    <span className="text-xl">{item.emoji}</span>
+                  </div>
+                  <h4 className="font-bold text-gray-800 text-sm">{item.title}</h4>
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {item.desc}
+                </p>
+                <div className="flex items-center text-blue-600 text-xs font-semibold gap-1">
+                  Learn More
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative overflow-hidden" style={{
+        background: 'linear-gradient(120deg, #0c4a6e 0%, #0e7490 50%, #0891b2 100%)'
+      }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+        </div>
+        <div className="w-full max-w-[95%] mx-auto px-6 py-12 relative z-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white">MailShield</h3>
+                <p className="text-cyan-100 text-xs">Email Security Platform</p>
+              </div>
+            </div>
+            
+            <div className="text-right">
+              <p className="text-cyan-100 text-sm">© 2026 MailShield</p>
+              <p className="text-cyan-200 text-xs mt-0.5">Advanced Phishing Protection</p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

@@ -1,8 +1,8 @@
 // backend/src/headerAnalyzer.js
 
 /**
- * Enhanced Email Header Analyzer with SPF, DKIM, DMARC validation
- * Performs comprehensive security analysis on email headers
+ * ENHANCED Email Header Analyzer with Advanced Phishing Detection
+ * Multi-layered analysis system with machine learning-inspired scoring
  */
 
 function analyzeHeaders(headers) {
@@ -27,8 +27,11 @@ function analyzeHeaders(headers) {
   const received = (headerMap['received'] || '').toLowerCase();
   const returnPath = (headerMap['return-path'] || '').toLowerCase();
   const replyTo = (headerMap['reply-to'] || '').toLowerCase();
+  const messageId = (headerMap['message-id'] || '').toLowerCase();
 
-  // ========== SPF (Sender Policy Framework) Analysis ==========
+  // ========== AUTHENTICATION CHECKS (HIGH PRIORITY) ==========
+  
+  // SPF Analysis
   const spfResult = analyzeSPF(authResults, from, received);
   securityChecks.spf = spfResult;
   score += spfResult.score;
@@ -36,7 +39,7 @@ function analyzeHeaders(headers) {
     reasons.push(...spfResult.issues);
   }
 
-  // ========== DKIM (DomainKeys Identified Mail) Analysis ==========
+  // DKIM Analysis
   const dkimResult = analyzeDKIM(authResults, from);
   securityChecks.dkim = dkimResult;
   score += dkimResult.score;
@@ -44,7 +47,7 @@ function analyzeHeaders(headers) {
     reasons.push(...dkimResult.issues);
   }
 
-  // ========== DMARC (Domain-based Message Authentication) Analysis ==========
+  // DMARC Analysis
   const dmarcResult = analyzeDMARC(authResults, from, spfResult, dkimResult);
   securityChecks.dmarc = dmarcResult;
   score += dmarcResult.score;
@@ -52,7 +55,7 @@ function analyzeHeaders(headers) {
     reasons.push(...dmarcResult.issues);
   }
 
-  // ========== TLS/SSL Encryption Analysis ==========
+  // TLS/SSL Analysis
   const tlsResult = analyzeTLS(received);
   securityChecks.tls = tlsResult;
   score += tlsResult.score;
@@ -60,7 +63,7 @@ function analyzeHeaders(headers) {
     reasons.push(...tlsResult.issues);
   }
 
-  // ========== Sender Reputation Analysis ==========
+  // Sender Reputation
   const senderResult = analyzeSenderReputation(from, returnPath, replyTo);
   securityChecks.sender = senderResult;
   score += senderResult.score;
@@ -68,108 +71,462 @@ function analyzeHeaders(headers) {
     reasons.push(...senderResult.issues);
   }
 
-  // ---------- Rule: authentication missing for non-gmail senders ----------
+  // ========== DOMAIN & SENDER ANALYSIS ==========
+  
   const fromDomainMatch = from.match(/@([^>\s]+)/);
   const fromDomain = fromDomainMatch ? fromDomainMatch[1] : '';
-  const isGmailSender = fromDomain.endsWith('gmail.com') || fromDomain.endsWith('googlemail.com');
-
-  if (!isGmailSender && fromDomain) {
-    const hasSpfResult = authResults.includes('spf=');
-    const hasDkimResult = authResults.includes('dkim=');
-    if (!hasSpfResult || !hasDkimResult) {
-      score += 2;
-      reasons.push('Missing authentication records for external sender');
-    }
-  }
-
-  // ---------- Rule: suspicious subject keywords ----------
-  const suspiciousWords = [
-    'urgent', 'verify', 'password', 'account', 'invoice', 'payment',
-    'login', 'suspended', 'click here', 'reset', 'update', 'confirm',
-    'winner', 'lottery', 'prize', 'refund', 'bank', 'security alert',
-    'action required', 'unusual activity', 'expire', 'limited time'
+  
+  // Trusted provider check
+  const trustedProviders = [
+    'gmail.com', 'googlemail.com', 'google.com',
+    'outlook.com', 'hotmail.com', 'live.com', 'office365.com',
+    'yahoo.com', 'ymail.com', 'aol.com',
+    'icloud.com', 'me.com', 'mac.com',
+    'protonmail.com', 'proton.me', 'pm.me'
   ];
   
-  const foundSuspiciousWords = suspiciousWords.filter(w => subject.includes(w));
-  if (foundSuspiciousWords.length > 0) {
-    score += Math.min(foundSuspiciousWords.length, 3);
-    reasons.push(`Suspicious keywords: ${foundSuspiciousWords.join(', ')}`);
+  const isTrustedProvider = trustedProviders.some(provider => fromDomain.endsWith(provider));
+
+  // ========== ADVANCED PHISHING DETECTION ==========
+
+  // 1. CRITICAL: Brand Impersonation Detection
+  const brandImpersonationCheck = detectBrandImpersonation(from, fromDomain, subject, isTrustedProvider);
+  if (brandImpersonationCheck.detected) {
+    score += brandImpersonationCheck.score;
+    reasons.push(...brandImpersonationCheck.reasons);
   }
 
-  // ---------- Rule: From display name vs address mismatch ----------
-  const fromMatch = from.match(/(.*)<(.*)>/);
-  if (fromMatch) {
-    const displayName = fromMatch[1].trim();
-    const emailAddr = fromMatch[2];
-    const firstName = displayName.split(' ')[0];
-    if (firstName && !emailAddr.includes(firstName.toLowerCase())) {
-      score += 1;
-      reasons.push('Display name/email mismatch detected');
+  // 2. CRITICAL: Unicode/Homograph Attack Detection
+  const homographCheck = detectHomographAttack(from, fromDomain);
+  if (homographCheck.detected) {
+    score += homographCheck.score;
+    reasons.push(...homographCheck.reasons);
+  }
+
+  // 3. CRITICAL: URL Spoofing & Phishing Links
+  const urlCheck = analyzeURLs(subject, from);
+  if (urlCheck.suspicious) {
+    score += urlCheck.score;
+    reasons.push(...urlCheck.reasons);
+  }
+
+  // 4. HIGH: Urgent Action Keywords (Contextual Analysis)
+  const urgencyCheck = analyzeUrgency(subject, from, isTrustedProvider);
+  if (urgencyCheck.suspicious) {
+    score += urgencyCheck.score;
+    reasons.push(...urgencyCheck.reasons);
+  }
+
+  // 5. HIGH: Financial/Credential Theft Indicators
+  const credentialCheck = detectCredentialPhishing(subject);
+  if (credentialCheck.detected) {
+    score += credentialCheck.score;
+    reasons.push(...credentialCheck.reasons);
+  }
+
+  // 6. MEDIUM: Display Name vs Email Mismatch
+  const displayNameCheck = analyzeDisplayName(from, fromDomain, isTrustedProvider);
+  if (displayNameCheck.suspicious) {
+    score += displayNameCheck.score;
+    reasons.push(...displayNameCheck.reasons);
+  }
+
+  // 7. MEDIUM: Return-Path / Reply-To Anomalies
+  if (returnPath && fromDomain && !returnPath.includes(fromDomain) && !isTrustedProvider) {
+    const returnDomain = returnPath.match(/@([^>\s]+)/)?.[1] || '';
+    if (returnDomain && !trustedProviders.some(p => returnDomain.endsWith(p))) {
+      score += 3;
+      reasons.push(`Return-Path domain mismatch: ${returnDomain}`);
+    }
+  }
+  
+  if (replyTo && fromDomain && !replyTo.includes(fromDomain) && !isTrustedProvider) {
+    const replyDomain = replyTo.match(/@([^>\s]+)/)?.[1] || '';
+    if (replyDomain && !trustedProviders.some(p => replyDomain.endsWith(p))) {
+      score += 3;
+      reasons.push(`Reply-To domain mismatch: ${replyDomain}`);
     }
   }
 
-  // ---------- Rule: Return-Path / Reply-To mismatch with From ----------
-  if (returnPath && fromDomain && !returnPath.includes(fromDomain)) {
-    score += 2;
-    reasons.push('Return-Path domain differs from sender domain');
-  }
-  if (replyTo && fromDomain && !replyTo.includes(fromDomain)) {
-    score += 2;
-    reasons.push('Reply-To domain differs from sender domain');
+  // 8. LOW: Suspicious Message-ID
+  if (messageId && fromDomain) {
+    if (!messageId.includes(fromDomain) && !isTrustedProvider) {
+      score += 1;
+      reasons.push('Message-ID domain mismatch');
+    }
   }
 
-  // ---------- Rule: many mail hops (forwarding chain) ----------
+  // 9. LOW: Excessive mail hops
   const hopCount = (received.match(/received:/gi) || []).length;
-  if (hopCount >= 5) {
+  if (hopCount >= 8) {
+    score += 3;
+    reasons.push(`Excessive mail hops: ${hopCount}`);
+  } else if (hopCount >= 6) {
     score += 1;
-    reasons.push(`Excessive mail hops detected (${hopCount})`);
+    reasons.push(`Multiple mail hops: ${hopCount}`);
   }
 
-  // ---------- Final risk classification ----------
+  // 10. Authentication missing for non-trusted senders
+  if (!isTrustedProvider && fromDomain) {
+    const hasSpfResult = authResults.includes('spf=');
+    const hasDkimResult = authResults.includes('dkim=');
+    if (!hasSpfResult && !hasDkimResult) {
+      score += 4;
+      reasons.push('No authentication for unknown sender');
+    }
+  }
+
+  // ========== INTELLIGENT RISK CLASSIFICATION ==========
+  
   let label = 'OK';
-  let riskLevel = 'low';
+  let riskLevel = 'minimal';
   let confidence = 0;
 
-  if (score >= 8) {
+  // Critical thresholds with context awareness
+  if (score >= 15) {
+    // Definite phishing
     label = 'PHISHING_RISK';
     riskLevel = 'critical';
-    confidence = Math.min(95, 70 + score);
-  } else if (score >= 5) {
+    confidence = Math.min(99, 85 + score);
+  } else if (score >= 10) {
+    // Very likely phishing
     label = 'PHISHING_RISK';
     riskLevel = 'high';
-    confidence = Math.min(90, 60 + score);
-  } else if (score >= 3) {
+    confidence = Math.min(95, 75 + score);
+  } else if (score >= 7) {
+    // Suspicious with multiple red flags
+    label = 'SUSPICIOUS';
+    riskLevel = 'medium-high';
+    confidence = Math.min(90, 65 + score * 2);
+  } else if (score >= 5) {
+    // Some concerns
     label = 'SUSPICIOUS';
     riskLevel = 'medium';
-    confidence = Math.min(85, 50 + score * 5);
+    confidence = Math.min(85, 55 + score * 3);
+  } else if (score >= 3) {
+    // Minor issues
+    if (spfResult.status === 'fail' || dkimResult.status === 'fail') {
+      label = 'SUSPICIOUS';
+      riskLevel = 'low-medium';
+      confidence = Math.min(80, 50 + score * 5);
+    } else {
+      label = 'OK';
+      riskLevel = 'low';
+      confidence = 90;
+    }
   } else if (score >= 1) {
-    label = 'SUSPICIOUS';
-    riskLevel = 'low';
-    confidence = Math.min(75, 40 + score * 5);
+    // Very minor concerns
+    if (spfResult.status === 'fail' && dkimResult.status === 'fail') {
+      label = 'SUSPICIOUS';
+      riskLevel = 'low';
+      confidence = 75;
+    } else {
+      label = 'OK';
+      riskLevel = 'minimal';
+      confidence = 95;
+    }
   } else {
-    confidence = 95;
+    // All clear
+    label = 'OK';
+    riskLevel = 'minimal';
+    confidence = 98;
+  }
+
+  // Override for perfect authentication
+  if (spfResult.pass && dkimResult.pass && dmarcResult.pass && score < 5) {
+    label = 'OK';
+    confidence = Math.max(confidence, 96);
   }
 
   return { 
     label, 
     score, 
-    reasons,
+    reasons: reasons.slice(0, 5), // Top 5 reasons only
     riskLevel,
     confidence,
     securityChecks,
     metadata: {
       fromDomain,
-      isGmailSender,
+      isTrustedProvider,
       hopCount,
       timestamp: new Date().toISOString()
     }
   };
 }
 
+// ========== ADVANCED DETECTION FUNCTIONS ==========
+
 /**
- * Analyze SPF (Sender Policy Framework) records
- * SPF validates that the sending server is authorized to send on behalf of the domain
+ * Detect brand impersonation attempts
  */
+function detectBrandImpersonation(from, fromDomain, subject, isTrustedProvider) {
+  const result = { detected: false, score: 0, reasons: [] };
+  
+  // Well-known brands to check
+  const brands = [
+    { name: 'paypal', domains: ['paypal.com', 'paypal.co.uk'] },
+    { name: 'amazon', domains: ['amazon.com', 'amazon.co.uk', 'amazon.de'] },
+    { name: 'microsoft', domains: ['microsoft.com', 'office365.com', 'live.com'] },
+    { name: 'apple', domains: ['apple.com', 'icloud.com', 'me.com'] },
+    { name: 'google', domains: ['google.com', 'gmail.com', 'youtube.com'] },
+    { name: 'facebook', domains: ['facebook.com', 'fb.com'] },
+    { name: 'netflix', domains: ['netflix.com'] },
+    { name: 'linkedin', domains: ['linkedin.com'] },
+    { name: 'instagram', domains: ['instagram.com'] },
+    { name: 'twitter', domains: ['twitter.com', 'x.com'] },
+    { name: 'bank', domains: ['chase.com', 'wellsfargo.com', 'bankofamerica.com', 'citibank.com'] },
+    { name: 'fedex', domains: ['fedex.com'] },
+    { name: 'ups', domains: ['ups.com'] },
+    { name: 'dhl', domains: ['dhl.com'] },
+    { name: 'usps', domains: ['usps.com'] }
+  ];
+
+  for (const brand of brands) {
+    const brandInDisplay = from.toLowerCase().includes(brand.name);
+    const brandInSubject = subject.toLowerCase().includes(brand.name);
+    const legitDomain = brand.domains.some(d => fromDomain.endsWith(d));
+
+    if ((brandInDisplay || brandInSubject) && !legitDomain && !isTrustedProvider) {
+      result.detected = true;
+      result.score = 8; // High score for brand impersonation
+      result.reasons.push(`⚠️ Brand impersonation: Claims to be ${brand.name.toUpperCase()} but from ${fromDomain}`);
+      break;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Detect Unicode homograph attacks (lookalike characters)
+ */
+function detectHomographAttack(from, fromDomain) {
+  const result = { detected: false, score: 0, reasons: [] };
+  
+  // Check for non-ASCII characters in domain
+  const hasNonAscii = /[^\x00-\x7F]/.test(fromDomain);
+  
+  if (hasNonAscii) {
+    result.detected = true;
+    result.score = 10; // Very high score
+    result.reasons.push('🚨 Unicode homograph attack detected in domain');
+    return result;
+  }
+
+  // Check for common lookalike substitutions
+  const suspiciousPatterns = [
+    /[0O][0O]/g,  // Multiple O's and 0's together (e.g., paypa1.com)
+    /rn/g,        // 'rn' looks like 'm' (e.g., arnаzon.com)
+    /vv/g,        // 'vv' looks like 'w'
+    /[1l|!]/g     // 1, l, |, ! confusion
+  ];
+
+  const popularDomains = ['paypal', 'amazon', 'microsoft', 'apple', 'google', 'netflix'];
+  
+  for (const domain of popularDomains) {
+    if (fromDomain.includes(domain.substring(0, 4))) { // partial match
+      if (!fromDomain.includes(domain)) { // but not exact
+        result.detected = true;
+        result.score = 7;
+        result.reasons.push(`Suspicious domain similarity to ${domain}.com`);
+        break;
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Analyze URLs for phishing indicators
+ */
+function analyzeURLs(subject, from) {
+  const result = { suspicious: false, score: 0, reasons: [] };
+  
+  const urlPattern = /https?:\/\/[^\s<>"]+/gi;
+  const urls = subject.match(urlPattern) || [];
+
+  if (urls.length > 0) {
+    result.suspicious = true;
+    result.score = 3;
+    result.reasons.push(`${urls.length} link(s) in subject line`);
+
+    // Check for URL shorteners (high risk)
+    const shorteners = ['bit.ly', 'tinyurl.com', 'goo.gl', 't.co', 'ow.ly', 'is.gd', 'buff.ly', 'adf.ly'];
+    urls.forEach(url => {
+      if (shorteners.some(s => url.includes(s))) {
+        result.score += 4;
+        result.reasons.push('🚨 URL shortener detected (high risk)');
+      }
+    });
+
+    // Check for suspicious TLDs
+    const suspiciousTLDs = ['.tk', '.ml', '.ga', '.cf', '.gq', '.xyz', '.top', '.click', '.link'];
+    urls.forEach(url => {
+      if (suspiciousTLDs.some(tld => url.includes(tld))) {
+        result.score += 3;
+        result.reasons.push('Suspicious TLD in URL');
+      }
+    });
+  }
+
+  return result;
+}
+
+/**
+ * Analyze urgency and pressure tactics
+ */
+function analyzeUrgency(subject, from, isTrustedProvider) {
+  const result = { suspicious: false, score: 0, reasons: [] };
+
+  // CRITICAL urgency phrases (immediate action required)
+  const criticalUrgency = [
+    'account suspended', 'account locked', 'urgent action required',
+    'verify immediately', 'confirm now', 'expires today',
+    'final notice', 'last warning', 'suspended account',
+    'unusual activity detected', 'suspicious activity',
+    'unauthorized access', 'security alert'
+  ];
+
+  // HIGH urgency phrases
+  const highUrgency = [
+    'urgent', 'immediate', 'action required', 'verify account',
+    'confirm identity', 'update payment', 'expire', 'limited time',
+    'act now', 'click here now', 'respond immediately'
+  ];
+
+  // MEDIUM urgency phrases
+  const mediumUrgency = [
+    'reminder', 'notification', 'alert', 'update available',
+    'please verify', 'please confirm', 'reset password'
+  ];
+
+  let urgencyLevel = 0;
+  let foundPhrases = [];
+
+  // Check critical urgency
+  criticalUrgency.forEach(phrase => {
+    if (subject.includes(phrase)) {
+      urgencyLevel = 3;
+      foundPhrases.push(phrase);
+    }
+  });
+
+  // Check high urgency if no critical found
+  if (urgencyLevel === 0) {
+    highUrgency.forEach(phrase => {
+      if (subject.includes(phrase)) {
+        urgencyLevel = 2;
+        foundPhrases.push(phrase);
+      }
+    });
+  }
+
+  // Check medium urgency if no high found
+  if (urgencyLevel === 0) {
+    mediumUrgency.forEach(phrase => {
+      if (subject.includes(phrase)) {
+        urgencyLevel = 1;
+        foundPhrases.push(phrase);
+      }
+    });
+  }
+
+  // Apply scoring based on context
+  if (urgencyLevel === 3) {
+    result.suspicious = true;
+    result.score = isTrustedProvider ? 2 : 7; // Lower score if from trusted provider
+    result.reasons.push(`🚨 Critical urgency detected: "${foundPhrases[0]}"`);
+  } else if (urgencyLevel === 2) {
+    result.suspicious = true;
+    result.score = isTrustedProvider ? 1 : 4;
+    result.reasons.push(`⚠️ High urgency language: "${foundPhrases[0]}"`);
+  } else if (urgencyLevel === 1 && !isTrustedProvider) {
+    result.suspicious = true;
+    result.score = 1;
+    result.reasons.push(`Medium urgency: "${foundPhrases[0]}"`);
+  }
+
+  return result;
+}
+
+/**
+ * Detect credential/financial phishing attempts
+ */
+function detectCredentialPhishing(subject) {
+  const result = { detected: false, score: 0, reasons: [] };
+
+  const credentialKeywords = [
+    // Financial
+    'wire transfer', 'bank account', 'routing number', 'account number',
+    'credit card', 'debit card', 'cvv', 'social security',
+    'tax refund', 'inheritance', 'lottery', 'prize money',
+    'bitcoin', 'cryptocurrency', 'wallet',
+    
+    // Credentials
+    'password reset', 'verify password', 'confirm password',
+    'login credentials', 'username', 'security code',
+    'two-factor', '2fa code', 'verification code'
+  ];
+
+  let foundKeywords = [];
+  credentialKeywords.forEach(keyword => {
+    if (subject.includes(keyword)) {
+      foundKeywords.push(keyword);
+    }
+  });
+
+  if (foundKeywords.length > 0) {
+    result.detected = true;
+    result.score = foundKeywords.length * 3; // 3 points per keyword
+    result.reasons.push(`🚨 Credential/financial keywords: ${foundKeywords.slice(0, 2).join(', ')}`);
+  }
+
+  return result;
+}
+
+/**
+ * Analyze display name vs email address
+ */
+function analyzeDisplayName(from, fromDomain, isTrustedProvider) {
+  const result = { suspicious: false, score: 0, reasons: [] };
+
+  const fromMatch = from.match(/(.*)<(.*)>/);
+  if (!fromMatch) return result;
+
+  const displayName = fromMatch[1].trim().toLowerCase();
+  const emailAddr = fromMatch[2].toLowerCase();
+
+  // Check for suspicious display names
+  const suspiciousNames = ['ceo', 'admin', 'administrator', 'support', 'service', 'security', 'notification'];
+  
+  if (suspiciousNames.some(name => displayName.includes(name)) && !isTrustedProvider) {
+    result.suspicious = true;
+    result.score = 2;
+    result.reasons.push('Generic/suspicious display name');
+  }
+
+  // Check if display name contains @ symbol (impersonation attempt)
+  if (displayName.includes('@')) {
+    result.suspicious = true;
+    result.score = 5;
+    result.reasons.push('Display name contains email address');
+  }
+
+  // Check for complete name/email mismatch
+  const firstName = displayName.split(' ')[0];
+  if (firstName && firstName.length > 2 && !emailAddr.includes(firstName.substring(0, 3))) {
+    result.suspicious = true;
+    result.score = 1;
+    result.reasons.push('Name/email mismatch');
+  }
+
+  return result;
+}
+
+// ========== AUTHENTICATION ANALYSIS FUNCTIONS ==========
+// (Keep existing SPF, DKIM, DMARC, TLS, Sender functions)
+
 function analyzeSPF(authResults, from, received) {
   const result = {
     status: 'unknown',
@@ -179,7 +536,6 @@ function analyzeSPF(authResults, from, received) {
     details: {}
   };
 
-  // Check for explicit SPF results in authentication headers
   if (authResults.includes('spf=pass')) {
     result.status = 'pass';
     result.pass = true;
@@ -192,8 +548,8 @@ function analyzeSPF(authResults, from, received) {
   } else if (authResults.includes('spf=fail')) {
     result.status = 'fail';
     result.pass = false;
-    result.score = 4;
-    result.issues.push('SPF validation failed - sender not authorized');
+    result.score = 6; // Increased from 5
+    result.issues.push('❌ SPF validation failed');
     result.details = {
       alignment: 'misaligned',
       reason: 'IP not in SPF record'
@@ -201,50 +557,34 @@ function analyzeSPF(authResults, from, received) {
   } else if (authResults.includes('spf=softfail')) {
     result.status = 'softfail';
     result.pass = false;
-    result.score = 2;
-    result.issues.push('SPF soft fail - questionable sender');
+    result.score = 3;
+    result.issues.push('⚠️ SPF soft fail');
     result.details = {
       alignment: 'partial',
-      reason: 'SPF record suggests rejection'
+      reason: 'SPF suggests rejection'
     };
   } else if (authResults.includes('spf=neutral')) {
     result.status = 'neutral';
     result.pass = false;
     result.score = 1;
-    result.issues.push('SPF neutral - no assertion about sender');
     result.details = {
       alignment: 'unknown',
-      reason: 'Domain makes no assertion'
+      reason: 'No SPF assertion'
     };
   } else if (authResults.includes('spf=none')) {
     result.status = 'none';
     result.pass = false;
     result.score = 2;
-    result.issues.push('No SPF record found for sender domain');
+    result.issues.push('No SPF record found');
     result.details = {
       alignment: 'none',
-      reason: 'Domain has no SPF record'
+      reason: 'Domain has no SPF'
     };
-  } else {
-    // No SPF information - suspicious for external senders
-    const fromDomain = extractDomain(from);
-    if (fromDomain && !isInternalDomain(fromDomain)) {
-      result.status = 'missing';
-      result.score = 2;
-      result.issues.push('SPF check missing for external sender');
-      result.details = {
-        reason: 'No SPF validation performed'
-      };
-    }
   }
 
   return result;
 }
 
-/**
- * Analyze DKIM (DomainKeys Identified Mail) signatures
- * DKIM ensures the email hasn't been tampered with in transit
- */
 function analyzeDKIM(authResults, from) {
   const result = {
     status: 'unknown',
@@ -260,15 +600,15 @@ function analyzeDKIM(authResults, from) {
     result.score = 0;
     result.details = {
       signature: 'valid',
-      selector: generateSelector(),
+      selector: 'default',
       algorithm: 'rsa-sha256',
       headerFields: ['from', 'to', 'subject', 'date']
     };
   } else if (authResults.includes('dkim=fail')) {
     result.status = 'fail';
     result.pass = false;
-    result.score = 4;
-    result.issues.push('DKIM signature validation failed - possible tampering');
+    result.score = 6; // Increased from 5
+    result.issues.push('❌ DKIM signature failed');
     result.details = {
       signature: 'invalid',
       reason: 'Signature verification failed'
@@ -277,39 +617,24 @@ function analyzeDKIM(authResults, from) {
     result.status = 'neutral';
     result.pass = false;
     result.score = 1;
-    result.issues.push('DKIM signature neutral');
     result.details = {
       signature: 'inconclusive',
-      reason: 'Unable to verify signature'
+      reason: 'Unable to verify'
     };
   } else if (authResults.includes('dkim=none')) {
     result.status = 'none';
     result.pass = false;
     result.score = 2;
-    result.issues.push('No DKIM signature found');
+    result.issues.push('No DKIM signature');
     result.details = {
       signature: 'absent',
       reason: 'Email not signed'
     };
-  } else {
-    const fromDomain = extractDomain(from);
-    if (fromDomain && !isInternalDomain(fromDomain)) {
-      result.status = 'missing';
-      result.score = 2;
-      result.issues.push('DKIM validation missing for external sender');
-      result.details = {
-        reason: 'No DKIM check performed'
-      };
-    }
   }
 
   return result;
 }
 
-/**
- * Analyze DMARC (Domain-based Message Authentication, Reporting & Conformance)
- * DMARC builds on SPF and DKIM to prevent domain spoofing
- */
 function analyzeDMARC(authResults, from, spfResult, dkimResult) {
   const result = {
     status: 'unknown',
@@ -335,26 +660,24 @@ function analyzeDMARC(authResults, from, spfResult, dkimResult) {
   } else if (authResults.includes('dmarc=fail')) {
     result.status = 'fail';
     result.pass = false;
-    result.score = 5;
-    result.issues.push('DMARC policy failed - high spoofing risk');
+    result.score = 7; // Increased from 6
+    result.issues.push('🚨 DMARC policy failed');
     result.policy = 'reject';
     result.details = {
       alignment: 'fail',
       policy: 'reject',
       action: 'quarantine',
-      reason: 'Neither SPF nor DKIM aligned'
+      reason: 'SPF/DKIM not aligned'
     };
   } else if (authResults.includes('dmarc=none')) {
     result.status = 'none';
     result.pass = false;
-    result.score = 2;
-    result.issues.push('No DMARC policy found for sender domain');
+    result.score = 1;
     result.details = {
       alignment: 'unknown',
-      reason: 'Domain has no DMARC record'
+      reason: 'No DMARC record'
     };
   } else {
-    // Infer DMARC status based on SPF + DKIM
     if (spfResult.pass || dkimResult.pass) {
       result.status = 'inferred-pass';
       result.pass = true;
@@ -363,26 +686,12 @@ function analyzeDMARC(authResults, from, spfResult, dkimResult) {
         alignment: 'inferred',
         reason: 'SPF or DKIM passed'
       };
-    } else {
-      const fromDomain = extractDomain(from);
-      if (fromDomain && !isInternalDomain(fromDomain)) {
-        result.status = 'missing';
-        result.score = 3;
-        result.issues.push('DMARC validation missing for external sender');
-        result.details = {
-          reason: 'No DMARC check performed'
-        };
-      }
     }
   }
 
   return result;
 }
 
-/**
- * Analyze TLS/SSL encryption in transit
- * Checks if email was transmitted securely
- */
 function analyzeTLS(received) {
   const result = {
     status: 'unknown',
@@ -394,26 +703,22 @@ function analyzeTLS(received) {
 
   const receivedLower = received.toLowerCase();
 
-  // Check for TLS indicators in Received headers
   if (receivedLower.includes('tls') || receivedLower.includes('esmtps')) {
     result.status = 'encrypted';
     result.encrypted = true;
     result.score = 0;
     
-    // Extract TLS version if available
     let tlsVersion = 'TLS 1.2';
     if (receivedLower.includes('tls1.3') || receivedLower.includes('tlsv1.3')) {
       tlsVersion = 'TLS 1.3';
-    } else if (receivedLower.includes('tls1.2') || receivedLower.includes('tlsv1.2')) {
-      tlsVersion = 'TLS 1.2';
     } else if (receivedLower.includes('tls1.1') || receivedLower.includes('tlsv1.1')) {
       tlsVersion = 'TLS 1.1';
       result.score = 1;
-      result.issues.push('Using outdated TLS 1.1');
+      result.issues.push('Outdated TLS 1.1');
     } else if (receivedLower.includes('tls1.0') || receivedLower.includes('tlsv1.0')) {
       tlsVersion = 'TLS 1.0';
       result.score = 2;
-      result.issues.push('Using deprecated TLS 1.0');
+      result.issues.push('⚠️ Deprecated TLS 1.0');
     }
 
     result.details = {
@@ -425,7 +730,7 @@ function analyzeTLS(received) {
     result.status = 'unencrypted';
     result.encrypted = false;
     result.score = 1;
-    result.issues.push('Email transmitted without encryption');
+    result.issues.push('Unencrypted transmission');
     result.details = {
       protocol: 'SMTP',
       encryption: 'none'
@@ -435,9 +740,6 @@ function analyzeTLS(received) {
   return result;
 }
 
-/**
- * Analyze sender reputation and domain trust
- */
 function analyzeSenderReputation(from, returnPath, replyTo) {
   const result = {
     status: 'unknown',
@@ -449,15 +751,18 @@ function analyzeSenderReputation(from, returnPath, replyTo) {
 
   const fromDomain = extractDomain(from);
   if (!fromDomain) {
-    result.score = 3;
+    result.score = 4;
     result.issues.push('Unable to extract sender domain');
     return result;
   }
 
-  // Check if sender is from a trusted domain
   const trustedDomains = [
-    'gmail.com', 'googlemail.com', 'outlook.com', 'hotmail.com',
-    'yahoo.com', 'icloud.com', 'protonmail.com', 'aol.com'
+    'gmail.com', 'googlemail.com', 'google.com',
+    'outlook.com', 'hotmail.com', 'live.com', 'microsoft.com',
+    'yahoo.com', 'ymail.com', 'rocketmail.com',
+    'icloud.com', 'me.com', 'mac.com',
+    'protonmail.com', 'pm.me', 'proton.me',
+    'aol.com', 'aim.com'
   ];
 
   if (trustedDomains.some(d => fromDomain.endsWith(d))) {
@@ -474,20 +779,16 @@ function analyzeSenderReputation(from, returnPath, replyTo) {
     result.trusted = false;
     result.score = 0;
     
-    // Check for suspicious TLDs
-    const suspiciousTLDs = ['.tk', '.ml', '.ga', '.cf', '.gq', '.top', '.xyz', '.info'];
+    const suspiciousTLDs = [
+      '.tk', '.ml', '.ga', '.cf', '.gq', '.top', '.xyz', 
+      '.info', '.click', '.link', '.work', '.date', '.download',
+      '.bid', '.win', '.review', '.country', '.stream', '.zip'
+    ];
+    
     if (suspiciousTLDs.some(tld => fromDomain.endsWith(tld))) {
-      result.score = 2;
-      result.issues.push('Sender using suspicious TLD');
+      result.score = 4; // Increased from 3
+      result.issues.push('🚨 Suspicious domain TLD');
       result.details.suspiciousTLD = true;
-    }
-
-    // Check domain age (simulated)
-    const domainAge = Math.floor(Math.random() * 3000); // days
-    if (domainAge < 30) {
-      result.score += 2;
-      result.issues.push('Recently registered domain (< 30 days)');
-      result.details.domainAge = domainAge;
     }
 
     result.details = {
@@ -501,26 +802,16 @@ function analyzeSenderReputation(from, returnPath, replyTo) {
   return result;
 }
 
-// ========== Helper Functions ==========
+// ========== HELPER FUNCTIONS ==========
 
 function extractDomain(email) {
   const match = email.match(/@([^>\s]+)/);
   return match ? match[1].toLowerCase() : '';
 }
 
-function isInternalDomain(domain) {
-  const internalDomains = ['gmail.com', 'googlemail.com', 'google.com'];
-  return internalDomains.some(d => domain.endsWith(d));
-}
-
 function extractIPFromReceived(received) {
   const match = received.match(/\[(\d+\.\d+\.\d+\.\d+)\]/);
   return match ? match[1] : '203.0.113.42';
-}
-
-function generateSelector() {
-  const selectors = ['default', 's1', 's2', 'mail', 'google', 'k1'];
-  return selectors[Math.floor(Math.random() * selectors.length)];
 }
 
 module.exports = { 

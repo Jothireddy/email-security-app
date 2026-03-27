@@ -77,7 +77,7 @@ async function handleHistoryForUser(emailAddress, historyId) {
 
   const phishingLabelId = await ensureLabel(gmail, 'me', 'PHISHING_RISK');
   const suspiciousLabelId = await ensureLabel(gmail, 'me', 'SUSPICIOUS');
-  const okLabelId = await ensureLabel(gmail, 'me', 'OK_SAFE');
+  const okLabelId = await ensureLabel(gmail, 'me', 'OK');  // ← CHANGED from 'OK_SAFE' to 'OK'
 
   for (const msgId of newMessageIds) {
     if (isMessageProcessed(emailAddress, msgId)) continue;
